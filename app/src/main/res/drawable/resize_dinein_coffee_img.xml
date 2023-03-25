@@ -2,6 +2,6 @@
     <item
         android:width="100dp"
         android:height="100dp"
-        android:drawable="@drawable/coffee_cup" />
+        android:drawable="@drawable/dine_coffee2" />
 
 </layer-list>
