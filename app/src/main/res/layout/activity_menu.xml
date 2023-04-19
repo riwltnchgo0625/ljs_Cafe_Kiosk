@@ -7,39 +7,22 @@
     tools:context=".MenuActivity">
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager2"
+        android:id="@+id/ljs_viewPager2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+        android:id="@+id/ljs_tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:background="@color/white"
         app:tabGravity="fill"
         app:tabMode="fixed"
-        android:background="@color/white"
-        tools:ignore="MissingConstraints" >
+        tools:ignore="MissingConstraints">
 
-    <!--    &lt;!&ndash; TabItem은 탭메뉴 하나를 의미한다. &ndash;&gt;
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Monday" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tuesday" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>-->
 
     </com.google.android.material.tabs.TabLayout>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

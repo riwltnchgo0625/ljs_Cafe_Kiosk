@@ -13,9 +13,9 @@ class MenuAdapter(private val context: Context?, private val menuList: List<Menu
     RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val menuImage: ImageView = itemView.findViewById(R.id.menu_image)
-        val menuName: TextView = itemView.findViewById(R.id.menu_name)
-        val menuPrice: TextView = itemView.findViewById(R.id.menu_price)
+        val ljs_menuImage: ImageView = itemView.findViewById(R.id.menu_image)
+        val ljs_menuName: TextView = itemView.findViewById(R.id.menu_name)
+        val ljs_menuPrice: TextView = itemView.findViewById(R.id.menu_price)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,9 +25,9 @@ class MenuAdapter(private val context: Context?, private val menuList: List<Menu
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val menu = menuList[position]
-        holder.menuImage.setImageResource(menu.imageResource)
-        holder.menuName.text = menu.name
-        holder.menuPrice.text = menu.price.toString()
+        holder.ljs_menuImage.setImageResource(menu.imageResource)
+        holder.ljs_menuName.text = menu.name
+        holder.ljs_menuPrice.text = menu.price.toString()
     }
 
     override fun getItemCount(): Int {

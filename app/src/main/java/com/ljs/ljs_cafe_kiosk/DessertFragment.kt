@@ -2,7 +2,6 @@ package com.ljs.ljs_cafe_kiosk
 
 
 import Menu
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 // 디저트 메뉴 페이지
 
-class BreadFragment : Fragment() {
+class DessertFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: MenuAdapter
     private lateinit var menuList: MutableList<Menu>
@@ -25,8 +24,8 @@ class BreadFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val rootView = inflater.inflate(R.layout.menu_three_fragment, container, false)
-        recyclerView = rootView.findViewById(R.id.menu_dessert_list)
+        val ljs_rootView = inflater.inflate(R.layout.fragment_dessert_menu, container, false)
+        recyclerView = ljs_rootView.findViewById(R.id.menu_dessert_list)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         menuList = mutableListOf(
             Menu("치즈케이크", 4500,R.drawable.main_coffee_logo),
@@ -37,6 +36,6 @@ class BreadFragment : Fragment() {
         )
         adapter = MenuAdapter(activity, menuList)
         recyclerView.adapter = adapter
-        return rootView
+        return ljs_rootView
     }
 }

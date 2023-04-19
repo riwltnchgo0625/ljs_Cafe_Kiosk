@@ -25,8 +25,8 @@ class CoffeeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val rootView = inflater.inflate(R.layout.menu_one_fragment, container, false)
-        recyclerView = rootView.findViewById(R.id.menu_coffee_list)
+        val ljs_rootView = inflater.inflate(R.layout.fragment_coffee_menu, container, false)
+        recyclerView = ljs_rootView.findViewById(R.id.menu_coffee_list)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         menuList = mutableListOf(
             Menu("아메리카노", 2500, R.drawable.main_coffee_logo),
@@ -35,7 +35,7 @@ class CoffeeFragment : Fragment() {
         )
         adapter = MenuAdapter(activity, menuList)
         recyclerView.adapter = adapter
-        return rootView
+        return ljs_rootView
     }
 
 }

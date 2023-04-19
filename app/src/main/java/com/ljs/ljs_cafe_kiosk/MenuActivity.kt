@@ -20,11 +20,11 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
 // Set up the ViewPager2 and TabLayout
-        val viewPager2 = findViewById<ViewPager2>(R.id.viewPager2)
-        viewPager2.adapter = MyPagerAdapter(this)
+        val ljs_viewPager2 = findViewById<ViewPager2>(R.id.ljs_viewPager2)
+        ljs_viewPager2.adapter = MyPagerAdapter(this)
 
-        val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
-        TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
+        val ljs_tabLayout = findViewById<TabLayout>(R.id.ljs_tabLayout)
+        TabLayoutMediator(ljs_tabLayout, ljs_viewPager2) { tab, position ->
             tab.text = when (position) {
                 0 -> "커피"
                 1 -> "음료"
@@ -36,19 +36,19 @@ class MenuActivity : AppCompatActivity() {
 
     class FirstFragment : Fragment() {
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-            return inflater.inflate(R.layout.menu_one_fragment, container, false)
+            return inflater.inflate(R.layout.fragment_coffee_menu, container, false)
         }
     }
 
     class SecondFragment : Fragment() {
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-            return inflater.inflate(R.layout.menu_two_fragment, container, false)
+            return inflater.inflate(R.layout.fragment_drink_menu, container, false)
         }
     }
 
     class ThirdFragment : Fragment() {
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-            return inflater.inflate(R.layout.menu_three_fragment, container, false)
+            return inflater.inflate(R.layout.fragment_dessert_menu, container, false)
         }
     }
 
@@ -59,7 +59,7 @@ class MenuActivity : AppCompatActivity() {
             return when (position) {
                 0 -> CoffeeFragment()
                 1 -> DrinkFragment()
-                2 -> BreadFragment()
+                2 -> DessertFragment()
                 else -> throw IllegalArgumentException("Invalid position")
             }
         }
