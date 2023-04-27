@@ -19,6 +19,7 @@ class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
+
 // Set up the ViewPager2 and TabLayout
         val ljs_viewPager2 = findViewById<ViewPager2>(R.id.ljs_viewPager2)
         ljs_viewPager2.adapter = MyPagerAdapter(this)

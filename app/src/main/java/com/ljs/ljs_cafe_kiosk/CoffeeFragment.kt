@@ -1,23 +1,32 @@
 package com.ljs.ljs_cafe_kiosk
 
+
 import Menu
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 
 import android.view.View
 import android.view.ViewGroup
+import android.widget.*
+import androidx.recyclerview.widget.GridLayoutManager
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 //커피 메뉴 페이지
-class CoffeeFragment : Fragment() {
+class CoffeeFragment : Fragment(), MenuAdapter.OnItemClickListener {
+
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: MenuAdapter
     private lateinit var menuList: MutableList<Menu>
+
+    private lateinit var popupView: View
+    private lateinit var popupWindow: PopupWindow
+
 
     @SuppressLint("RestrictedApi")
     override fun onCreateView(
@@ -27,16 +36,22 @@ class CoffeeFragment : Fragment() {
         // Inflate the layout for this fragment
         val ljs_rootView = inflater.inflate(R.layout.fragment_coffee_menu, container, false)
         recyclerView = ljs_rootView.findViewById(R.id.menu_coffee_list)
-        recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.layoutManager = GridLayoutManager(activity,2)
         menuList = mutableListOf(
             Menu("아메리카노", 2500, R.drawable.main_coffee_logo),
             Menu("카페라떼", 3000, R.drawable.main_coffee_logo),
             Menu("카푸치노", 3000, R.drawable.main_coffee_logo)
         )
-        adapter = MenuAdapter(activity, menuList)
+        adapter = MenuAdapter(activity, menuList, this)
         recyclerView.adapter = adapter
         return ljs_rootView
     }
 
+    override fun onItemClick(position : Int){
+        val inflater = LayoutInflater.from(activity)
+
+    }
 }
+
+
 

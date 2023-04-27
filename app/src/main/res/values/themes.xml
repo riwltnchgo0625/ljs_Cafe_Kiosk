@@ -12,5 +12,19 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+    </style>
+
+    <!-- numberPicker custom  -->
+    <style name="numberPickerCustomSize">
+        <!-- 내부 숫자 사이즈 -->
+        <item name="android:textSize">30sp</item>
+        <!-- 숫자 색깔-->
+        <item name="android:editTextColor">#2E2E2E</item>
+        <!-- 선택값 구분선 색상변경 -->
+        <item name="colorControlNormal">@color/main2</item>
+
+
+
     </style>
 </resources>
