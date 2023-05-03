@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,8 +30,8 @@
                         android:layout_width="300dp"
                         android:layout_height="180dp"
                         android:layout_margin="3dp"
-                        android:backgroundTint="#B9EEEEEE"
-                        android:background="@drawable/main_btn" />
+                        android:background="@drawable/main_btn"
+                        android:backgroundTint="#B9EEEEEE" />
                 </LinearLayout>
             </ScrollView>
 
@@ -79,22 +79,22 @@
         </LinearLayout>
 
         <LinearLayout
-            android:backgroundTint="@color/backgroud1"
-            android:clipToPadding="false"
             android:layout_width="wrap_content"
             android:layout_height="220dp"
             android:layout_gravity="bottom"
+            android:backgroundTint="@color/backgroud1"
+            android:clipToPadding="false"
             android:orientation="vertical">
 
 
             <Button
-                android:shadowColor="@color/dark_gray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/cancel_pay_btn_background"
                 android:backgroundTint="#FE674B"
+                android:shadowColor="@color/dark_gray"
                 android:text="전체취소"
                 android:textColor="@color/white"
                 android:textSize="16dp"

@@ -30,7 +30,7 @@ class DrinkFragment : Fragment(), MenuAdapter.OnItemClickListener {
         // Inflate the layout for this fragment
         val ljs_rootView = inflater.inflate(R.layout.fragment_drink_menu, container, false)
         recyclerView = ljs_rootView.findViewById(R.id.menu_drink_list)
-        recyclerView.layoutManager = GridLayoutManager(activity,2)
+        recyclerView.layoutManager = GridLayoutManager(activity, 2)
         menuList = mutableListOf(
             Menu("자몽에이드", 2500, R.drawable.main_coffee_logo),
             Menu("레몬에이드", 2500, R.drawable.main_coffee_logo),

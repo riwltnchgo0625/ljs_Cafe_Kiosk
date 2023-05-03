@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 // 디저트 메뉴 페이지
 
-class DessertFragment : Fragment(),MenuAdapter.OnItemClickListener {
+class DessertFragment : Fragment(), MenuAdapter.OnItemClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: MenuAdapter
     private lateinit var menuList: MutableList<Menu>
@@ -29,20 +29,20 @@ class DessertFragment : Fragment(),MenuAdapter.OnItemClickListener {
         // Inflate the layout for this fragment
         val ljs_rootView = inflater.inflate(R.layout.fragment_dessert_menu, container, false)
         recyclerView = ljs_rootView.findViewById(R.id.menu_dessert_list)
-        recyclerView.layoutManager = GridLayoutManager(activity,2)
+        recyclerView.layoutManager = GridLayoutManager(activity, 2)
         menuList = mutableListOf(
-            Menu("치즈케이크", 4500,R.drawable.main_coffee_logo),
-            Menu("딸기케이크", 5000,R.drawable.main_coffee_logo),
-            Menu("브라우니", 4000,R.drawable.main_coffee_logo),
-            Menu("마카롱", 3000,R.drawable.main_coffee_logo),
-            Menu("와플", 3500,R.drawable.main_coffee_logo)
+            Menu("치즈케이크", 4500, R.drawable.main_coffee_logo),
+            Menu("딸기케이크", 5000, R.drawable.main_coffee_logo),
+            Menu("브라우니", 4000, R.drawable.main_coffee_logo),
+            Menu("마카롱", 3000, R.drawable.main_coffee_logo),
+            Menu("와플", 3500, R.drawable.main_coffee_logo)
         )
-        adapter = MenuAdapter(activity, menuList,this)
+        adapter = MenuAdapter(activity, menuList, this)
         recyclerView.adapter = adapter
         return ljs_rootView
     }
 
-    override fun onItemClick(position : Int){
+    override fun onItemClick(position: Int) {
 
     }
 }

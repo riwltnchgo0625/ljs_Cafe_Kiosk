@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:layout_gravity="bottom"
     android:background="#EEEEEE"
-    tools:context="DrinkFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="DrinkFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

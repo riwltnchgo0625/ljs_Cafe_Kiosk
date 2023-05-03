@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,30 +8,29 @@
     tools:context=".MenuActivity">
 
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/ljs_viewPager2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="top"
+        android:layout_weight="1"
+        tools:ignore="MissingConstraints" />
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/ljs_viewPager2"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_gravity="top"
-                android:layout_weight="1"
-                tools:ignore="MissingConstraints" />
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/ljs_tabLayout"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/white"
-                android:textAlignment="center"
-                app:tabGravity="fill"
-                app:tabMode="fixed"
-                style="@style/TabText"
-                tools:ignore="MissingConstraints">
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/ljs_tabLayout"
+        style="@style/TabText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:textAlignment="center"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        tools:ignore="MissingConstraints">
 
 
-            </com.google.android.material.tabs.TabLayout>
+    </com.google.android.material.tabs.TabLayout>
 
-    <include layout="@layout/fragment_order_list"/>
+    <include layout="@layout/fragment_order_list" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

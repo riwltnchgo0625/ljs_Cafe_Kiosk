@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.GridLayoutManager
 
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,8 +25,6 @@ class CoffeeFragment : Fragment(), MenuAdapter.OnItemClickListener {
     private lateinit var adapter: MenuAdapter
     private lateinit var menuList: MutableList<Menu>
 
-    private lateinit var popupView: View
-    private lateinit var popupWindow: PopupWindow
 
 
     @SuppressLint("RestrictedApi")
@@ -50,7 +49,7 @@ class CoffeeFragment : Fragment(), MenuAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(position : Int){
-        val inflater = LayoutInflater.from(activity)
+
 
     }
 }

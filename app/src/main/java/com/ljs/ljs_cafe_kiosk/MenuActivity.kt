@@ -36,19 +36,31 @@ class MenuActivity : AppCompatActivity() {
     }
 
     class FirstFragment : Fragment() {
-        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View? {
             return inflater.inflate(R.layout.fragment_coffee_menu, container, false)
         }
     }
 
     class SecondFragment : Fragment() {
-        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View? {
             return inflater.inflate(R.layout.fragment_drink_menu, container, false)
         }
     }
 
     class ThirdFragment : Fragment() {
-        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View? {
             return inflater.inflate(R.layout.fragment_dessert_menu, container, false)
         }
     }
