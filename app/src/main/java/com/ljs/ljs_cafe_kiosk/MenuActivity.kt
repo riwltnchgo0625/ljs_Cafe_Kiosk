@@ -20,7 +20,7 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
 
-// Set up the ViewPager2 and TabLayout
+// 뷰페이저, 탭 레이아웃
         val ljs_viewPager2 = findViewById<ViewPager2>(R.id.ljs_viewPager2)
         ljs_viewPager2.adapter = MyPagerAdapter(this)
 

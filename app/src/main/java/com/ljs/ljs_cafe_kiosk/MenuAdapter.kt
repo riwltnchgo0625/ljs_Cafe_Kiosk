@@ -20,6 +20,7 @@ class MenuAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         View.OnClickListener {
+        //메뉴 이미지, 이름, 가격
         val ljs_menuImage: ImageView = itemView.findViewById(R.id.menu_image)
         val ljs_menuName: TextView = itemView.findViewById(R.id.menu_name)
         val ljs_menuPrice: TextView = itemView.findViewById(R.id.menu_price)

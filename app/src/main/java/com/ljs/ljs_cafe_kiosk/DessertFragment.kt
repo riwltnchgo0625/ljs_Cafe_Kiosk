@@ -26,10 +26,11 @@ class DessertFragment : Fragment(), MenuAdapter.OnItemClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         val ljs_rootView = inflater.inflate(R.layout.fragment_dessert_menu, container, false)
         recyclerView = ljs_rootView.findViewById(R.id.menu_dessert_list)
         recyclerView.layoutManager = GridLayoutManager(activity, 2)
+        //메뉴 리스트
         menuList = mutableListOf(
             Menu("치즈케이크", 4500, R.drawable.main_coffee_logo),
             Menu("딸기케이크", 5000, R.drawable.main_coffee_logo),
@@ -43,6 +44,6 @@ class DessertFragment : Fragment(), MenuAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-
+        //메뉴 아이템 클릭시 이벤트
     }
 }

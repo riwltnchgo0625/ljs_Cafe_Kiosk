@@ -32,10 +32,10 @@ class CoffeeFragment : Fragment(), MenuAdapter.OnItemClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val ljs_rootView = inflater.inflate(R.layout.fragment_coffee_menu, container, false)
         recyclerView = ljs_rootView.findViewById(R.id.menu_coffee_list)
         recyclerView.layoutManager = GridLayoutManager(activity,2)
+        //메뉴 리스트
         menuList = mutableListOf(
             Menu("아메리카노(HOT)", 2500, R.drawable.main_coffee_logo),
             Menu("아메리카노(ICE)", 2500, R.drawable.main_coffee_logo),
@@ -49,6 +49,7 @@ class CoffeeFragment : Fragment(), MenuAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(position : Int){
+        //메뉴 아이템 클릭시 이벤트
 
 
     }
