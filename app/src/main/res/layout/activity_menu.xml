@@ -23,8 +23,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@color/white"
+                android:textAlignment="center"
                 app:tabGravity="fill"
                 app:tabMode="fixed"
+                style="@style/TabText"
                 tools:ignore="MissingConstraints">
 
 

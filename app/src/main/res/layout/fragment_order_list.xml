@@ -30,6 +30,7 @@
                         android:layout_width="300dp"
                         android:layout_height="180dp"
                         android:layout_margin="3dp"
+                        android:backgroundTint="#B9EEEEEE"
                         android:background="@drawable/main_btn" />
                 </LinearLayout>
             </ScrollView>
@@ -78,6 +79,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:backgroundTint="@color/backgroud1"
             android:clipToPadding="false"
             android:layout_width="wrap_content"
             android:layout_height="220dp"

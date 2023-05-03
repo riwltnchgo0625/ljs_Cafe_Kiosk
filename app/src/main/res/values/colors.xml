@@ -15,5 +15,6 @@
     <color name="red">#E74C3C</color>
     <color name="dark_gray">#454647</color>
     <color name="price_color">#FA8570</color>
+    <color name="backgroud1">#EEEEEE</color>
 
 </resources>

@@ -32,10 +32,10 @@ class DrinkFragment : Fragment(), MenuAdapter.OnItemClickListener {
         recyclerView = ljs_rootView.findViewById(R.id.menu_drink_list)
         recyclerView.layoutManager = GridLayoutManager(activity,2)
         menuList = mutableListOf(
-            Menu("아이스티", 2000, R.drawable.main_coffee_logo),
-            Menu("오렌지주스", 2500, R.drawable.main_coffee_logo),
-            Menu("레몬에이드", 3000, R.drawable.main_coffee_logo),
-            Menu("스무디", 3500, R.drawable.main_coffee_logo)
+            Menu("자몽에이드", 2500, R.drawable.main_coffee_logo),
+            Menu("레몬에이드", 2500, R.drawable.main_coffee_logo),
+            Menu("딸기라떼", 3000, R.drawable.main_coffee_logo),
+            Menu("고구마라떼", 3500, R.drawable.main_coffee_logo)
         )
         adapter = MenuAdapter(activity, menuList, this)
         recyclerView.adapter = adapter

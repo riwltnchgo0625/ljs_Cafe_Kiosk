@@ -8,7 +8,6 @@
     android:background="#EEEEEE"
     tools:context="DessertFragment"
     android:orientation="vertical">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,50 +46,6 @@
         </ScrollView>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:ignore="UselessParent">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/selected_menu_list"
-                        android:layout_width="300dp"
-                        android:layout_height="220dp"
-                        android:layout_margin="3dp"
-                        android:background="@drawable/main_btn" />
-                </LinearLayout>
-            </ScrollView>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="220dp"
-                android:orientation="vertical">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:text="전체취소" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="2"
-                    android:text="결제하기" />
-
-            </LinearLayout>
-        </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>
