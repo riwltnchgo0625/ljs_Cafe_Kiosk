@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,12 +18,13 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 //메뉴 페이지
+
 class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
     DrinkFragment.OnOrderClickListener, DessertFragment.OnOrderClickListener {
     private lateinit var ljs_orderHistory: MutableList<OrderHistoryItem>
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: OrderHistoryAdapter
-
+    private lateinit var orderTotalTextView: TextView
     private lateinit var allCancelButton: Button
 
     @SuppressLint("ClickableViewAccessibility")
@@ -36,6 +38,8 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
         adapter = OrderHistoryAdapter(ljs_orderHistory)
         recyclerView.adapter = adapter
 
+        orderTotalTextView = findViewById(R.id.order_total_price)
+        adapter.setTotalAmountTextView(orderTotalTextView)
 
         val recyclerView = findViewById<RecyclerView>(R.id.selected_menu_list)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -67,15 +71,29 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
 
         // 어댑터에 변경 내용을 알리고 새로고침
         adapter.notifyDataSetChanged()
+        updateOrderTotal()
     }
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onOrderClick(menu: Menu) {
-        val orderItem = OrderHistoryItem(menu.name, menu.price, 1)
-        ljs_orderHistory.add(orderItem)
+        val existingItem = ljs_orderHistory.find { it.menuName == menu.name }
+
+        if (existingItem != null) {
+            existingItem.quantity++
+            existingItem.totalPrice = existingItem.menuPrice * existingItem.quantity
+        } else {
+            val orderItem = OrderHistoryItem(menu.name, menu.price, 1)
+            ljs_orderHistory.add(orderItem)
+        }
+
         adapter.notifyDataSetChanged()
+        updateOrderTotal()
     }
 
+    private fun updateOrderTotal() {
+        val orderTotal = ljs_orderHistory.sumOf { it.totalPrice }
+        orderTotalTextView.text = orderTotal.toString()
+    }
 
     class FirstFragment : Fragment() {
         override fun onCreateView(

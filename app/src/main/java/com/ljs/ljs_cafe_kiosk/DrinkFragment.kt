@@ -11,11 +11,13 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.GridLayoutManager
 
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 //커피 외 음료 페이지
 
 class DrinkFragment : Fragment(), MenuAdapter.OnItemClickListener {
+
     private lateinit var orderClickListener: OnOrderClickListener
     private lateinit var ljs_recyclerView: RecyclerView
     private lateinit var ljs_adapter: MenuAdapter
@@ -60,6 +62,7 @@ class DrinkFragment : Fragment(), MenuAdapter.OnItemClickListener {
         //메뉴 아이템 클릭시 이벤트
         val menu = ljs_menuList[position]
         orderClickListener.onOrderClick(menu)
+
 
     }
 }

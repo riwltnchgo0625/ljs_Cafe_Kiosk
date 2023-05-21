@@ -55,7 +55,7 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/selected_menu_list"
-                        android:layout_width="300dp"
+                        android:layout_width="330dp"
                         android:layout_height="180dp"
                         android:layout_margin="3dp"
                         android:background="@drawable/main_btn"
@@ -88,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="140dp"
+                    android:layout_marginLeft="150dp"
                     android:layout_marginRight="5dp"
                     android:text="00000"
                     android:textColor="@color/red"
@@ -129,7 +129,7 @@
                 android:background="@drawable/cancel_pay_btn_background"
                 android:backgroundTint="#FE674B"
                 android:shadowColor="@color/dark_gray"
-                android:text="전체취소"
+                android:text="전체\n취소"
                 android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -142,7 +142,7 @@
                 android:layout_weight="2"
                 android:background="@drawable/cancel_pay_btn_background"
                 android:backgroundTint="@color/main2"
-                android:text="결제하기"
+                android:text="결제"
                 android:textColor="@color/white"
                 android:textSize="16dp"
                 android:textStyle="bold" />
