@@ -36,6 +36,7 @@ class MenuAdapter(
 
     interface OnItemClickListener {
         fun onItemClick(position: Int)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

@@ -1,64 +1,88 @@
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/menu_cardView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="299dp"
+    android:layout_height="40dp"
     android:orientation="horizontal"
-    app:cardBackgroundColor="#FFFFFF"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="9dp">
+    android:padding="3dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="vertical">
+    <Button
+        android:id="@+id/ljs_order_list_cancel"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="3dp"
+        android:background="@drawable/order_list_qua_btn"
+        android:backgroundTint="@color/red"
+        android:text="x"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        tools:ignore="HardcodedText" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+    <TextView
+        android:id="@+id/ljs_order_list_name"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1"
+        android:gravity="start"
+        android:text="아메리카노(ICE)"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
-            <TextView
-                android:paddingStart="5dp"
-                android:id="@+id/menu_name"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:gravity="start|center"
-                android:text="메뉴 이름"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+    <Button
+        android:id="@+id/ljs_order_list_minus"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="1dp"
+        android:background="@drawable/order_list_qua_btn"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/ljs_order_list_qua"
+        android:layout_width="5dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/ljs_order_list_plus"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/order_list_qua_btn"
+        android:gravity="center"
+        android:text="+"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
 
-            <TextView
-                android:id="@+id/menu_price"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="3dp"
-                android:gravity="right|center"
-                android:layout_weight="1"
-                android:text="0000"
-                android:layout_gravity="end"
-                android:textColor="@color/red"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+    <TextView
+        android:id="@+id/ljs_order_list_price"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:text="20000"
+        android:textColor="@color/price_color"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
-            <TextView
-                android:id="@+id/menu_price_won"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="3dp"
-                android:gravity="left|center"
-                android:layout_weight="1"
-                android:layout_gravity="end"
-                android:text="원"
-                android:textColor="@color/red"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-        </LinearLayout>
 
-    </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</LinearLayout>
