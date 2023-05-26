@@ -2,13 +2,15 @@ package com.ljs.ljs_cafe_kiosk
 
 import Menu
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.graphics.Color
+import android.graphics.Typeface
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
+import android.view.*
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +18,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+
 
 //메뉴 페이지
 
@@ -25,9 +28,9 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: OrderHistoryAdapter
     private lateinit var orderTotalTextView: TextView
-    private lateinit var allCancelButton: Button
+    private var popupWindow: PopupWindow? = null
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint("ClickableViewAccessibility", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
@@ -41,14 +44,20 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
         orderTotalTextView = findViewById(R.id.order_total_price)
         adapter.setTotalAmountTextView(orderTotalTextView)
 
+        //주문 내역 리사이클
         val recyclerView = findViewById<RecyclerView>(R.id.selected_menu_list)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         // 주문 리스트 초기화 버튼 초기화
-        allCancelButton = findViewById(R.id.all_cancel_btn)
+        val allCancelButton = findViewById<Button>(R.id.all_cancel_btn)
         allCancelButton.setOnClickListener { cancelOrder() }
 
-// 뷰페이저, 탭 레이아웃
+        //주문 결제 버튼
+        val allPay_Btn: Button = findViewById(R.id.all_pay_btn)
+        allPay_Btn.setOnClickListener { showOrderDetailsPopup() }
+
+
+        // 뷰페이저, 탭 레이아웃
         val ljs_viewPager2 = findViewById<ViewPager2>(R.id.ljs_viewPager2)
         ljs_viewPager2.adapter = MyPagerAdapter(this)
 
@@ -63,6 +72,104 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
         }.attach()
     }
 
+    @SuppressLint("MissingInflatedId")
+    private fun showOrderDetailsPopup() {
+        val orderHistoryItems = adapter.getOrderHistory()
+        val popupView = LayoutInflater.from(this).inflate(R.layout.popup_order_details, null)
+        val tableLayout = popupView.findViewById<LinearLayout>(R.id.popup_table_layout)
+
+        tableLayout.removeAllViews()
+
+        var totalAmount = 0
+
+        // 텍스트뷰 커스텀 함수
+        fun createTextView(
+            text: String,
+            weight: Float,
+            gravity: Int,
+            textColor: Int,
+            textSize: Float,
+            isBold: Boolean
+        ): TextView {
+            val textView = TextView(this)
+            textView.layoutParams =
+                TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, weight)
+            textView.gravity = gravity
+            textView.text = text
+            textView.setTextColor(ContextCompat.getColor(this, textColor))
+            textView.textSize = textSize
+            if (isBold) {
+                textView.setTypeface(null, Typeface.BOLD)
+            }
+            return textView
+        }
+
+        // Populate the order details in the TableLayout
+        for (orderItem in orderHistoryItems) {
+            val tableRow = TableRow(this)
+            tableRow.layoutParams = TableLayout.LayoutParams(
+                TableLayout.LayoutParams.MATCH_PARENT,
+                TableLayout.LayoutParams.WRAP_CONTENT
+            )
+
+            // 각 텍스트 선언 및 커스텀
+            val productNameTextView = createTextView(
+                orderItem.menuName,
+                2f,
+                Gravity.START,
+                android.R.color.black,
+                15f,
+                true
+            )
+            val quantityTextView = createTextView(
+                orderItem.quantity.toString(),
+                1f,
+                Gravity.CENTER,
+                android.R.color.black,
+                15f,
+                true
+            )
+            val totalPriceTextView = createTextView(
+                orderItem.totalPrice.toString(),
+                1f,
+                Gravity.CENTER,
+                R.color.main3,
+                18f,
+                true
+            )
+
+            // TableRow에 text추가
+            tableRow.addView(productNameTextView)
+            tableRow.addView(quantityTextView)
+            tableRow.addView(totalPriceTextView)
+
+            // 테이블에 행 추가
+            tableLayout.addView(tableRow)
+
+            totalAmount += orderItem.totalPrice
+        }
+
+        // Find the TextView for the total amount
+        val totalAmountTextView = popupView.findViewById<TextView>(R.id.popup_total_amount)
+        totalAmountTextView.text = totalAmount.toString()
+        val widthSize = 900
+        val heightSize = 1200
+
+        // Create the PopupWindow
+        popupWindow = PopupWindow(popupView, widthSize, heightSize, true)
+        popupWindow!!.elevation = 10f
+        popupWindow!!.setBackgroundDrawable(ColorDrawable(Color.WHITE)) // Optionally, set the background drawable
+        popupWindow!!.animationStyle = R.style.CustomPopupWindowStyle
+
+        // Show the PopupWindow
+        popupWindow!!.showAtLocation(popupView, Gravity.CENTER, 0, 0)
+    }
+
+    override fun onDestroy() {
+        // Dismiss the PopupWindow if it is showing
+        popupWindow?.dismiss()
+        super.onDestroy()
+    }
 
     @SuppressLint("NotifyDataSetChanged")
     private fun cancelOrder() {
@@ -137,6 +244,4 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
             }
         }
     }
-
-
 }

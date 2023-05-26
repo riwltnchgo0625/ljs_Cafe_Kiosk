@@ -48,10 +48,10 @@ class DessertFragment : Fragment(), MenuAdapter.OnItemClickListener {
 
         //메뉴 리스트
         ljs_menuList = mutableListOf(
-            Menu("치즈케이크", 4500, R.drawable.main_coffee_logo),
-            Menu("딸기케이크", 5000, R.drawable.main_coffee_logo),
-            Menu("브라우니", 4000, R.drawable.main_coffee_logo),
-            Menu("마카롱", 3000, R.drawable.main_coffee_logo),
+            Menu("초코케이크", 3500, R.drawable.choco_cake),
+            Menu("호두케이크", 3500, R.drawable.walnut_cake),
+            Menu("샌드위치", 4500, R.drawable.sandwich),
+            Menu("머핀", 2000, R.drawable.muffin),
             Menu("와플", 3500, R.drawable.main_coffee_logo)
         )
         orderHistory = mutableListOf() // 주문 내역 리스트 초기화

@@ -44,10 +44,10 @@ class CoffeeFragment : Fragment(), MenuAdapter.OnItemClickListener {
         //메뉴 리스트
         ljs_menuList = mutableListOf(
             Menu("아메리카노(HOT)", 2500, R.drawable.main_coffee_logo),
-            Menu("아메리카노(ICE)", 2500, R.drawable.main_coffee_logo),
+            Menu("아메리카노(ICE)", 2500, R.drawable.americano_ice),
             Menu("카페라떼(HOT)", 3000, R.drawable.main_coffee_logo),
-            Menu("카페라떼(ICE)", 3000, R.drawable.main_coffee_logo),
-            Menu("콜드브루", 4000, R.drawable.main_coffee_logo),
+            Menu("카페라떼(ICE)", 3000, R.drawable.latte_hot),
+
         )
         orderHistory = mutableListOf()
 

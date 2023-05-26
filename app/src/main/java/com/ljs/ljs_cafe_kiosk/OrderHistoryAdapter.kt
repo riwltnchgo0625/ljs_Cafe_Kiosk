@@ -45,6 +45,10 @@ class OrderHistoryAdapter(private val orderHistory: MutableList<OrderHistoryItem
 
     }
 
+    fun getOrderHistory(): List<OrderHistoryItem> {
+        return orderHistory
+    }
+
     override fun getItemCount(): Int {
         return orderHistory.size
     }

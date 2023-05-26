@@ -15,7 +15,7 @@
 
     </style>
 
-    <!-- 넘버피커 custom  -->
+    <!-- number 피커 custom  -->
     <style name="numberPickerCustomSize">
         <!-- 내부 숫자 사이즈 -->
         <item name="android:textSize">30sp</item>
@@ -25,10 +25,9 @@
         <item name="colorControlNormal">@color/main2</item>
     </style>
 
-    <!--탭레이아웃 custom-->
+    <!--탭 레이아웃 custom-->
     <style name="TabText" parent="TextAppearance.Design.Tab">
-
-       <!--텍스트 사이즈-->
+        <!--텍스트 사이즈-->
         <item name="android:textSize">14dp</item>
         <!--텍스트 색상-->
         <item name="android:textColor">@color/black</item>
@@ -38,8 +37,12 @@
         <item name="tabIndicatorColor">@color/black</item>
         <!--선택된 탭 텍스트 색상-->
         <item name="tabSelectedTextColor">@color/red</item>
+    </style>
 
-
+    <!--주문내역 팝업 custom-->
+    <style name="CustomPopupWindowStyle" parent="@android:style/Widget.PopupWindow">
+        <item name="android:width">400dp</item>
+        <item name="android:height">600dp</item>
     </style>
 
 </resources>

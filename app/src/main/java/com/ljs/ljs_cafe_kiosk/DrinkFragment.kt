@@ -45,8 +45,8 @@ class DrinkFragment : Fragment(), MenuAdapter.OnItemClickListener {
 
         //메뉴 리스트
         ljs_menuList = mutableListOf(
-            Menu("자몽에이드", 2500, R.drawable.main_coffee_logo),
-            Menu("레몬에이드", 2500, R.drawable.main_coffee_logo),
+            Menu("아이스티(복숭아)", 4000, R.drawable.main_coffee_logo),
+            Menu("아이스티(레몬)", 4000, R.drawable.icetea_remon),
             Menu("딸기라떼", 3000, R.drawable.main_coffee_logo),
             Menu("고구마라떼", 3500, R.drawable.main_coffee_logo)
         )
