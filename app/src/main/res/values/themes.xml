@@ -28,7 +28,7 @@
     <!--탭 레이아웃 custom-->
     <style name="TabText" parent="TextAppearance.Design.Tab">
         <!--텍스트 사이즈-->
-        <item name="android:textSize">14dp</item>
+        <item name="android:textSize">16sp</item>
         <!--텍스트 색상-->
         <item name="android:textColor">@color/black</item>
         <!--텍스트 스타일-->
@@ -39,10 +39,6 @@
         <item name="tabSelectedTextColor">@color/red</item>
     </style>
 
-    <!--주문내역 팝업 custom-->
-    <style name="CustomPopupWindowStyle" parent="@android:style/Widget.PopupWindow">
-        <item name="android:width">400dp</item>
-        <item name="android:height">600dp</item>
-    </style>
+
 
 </resources>

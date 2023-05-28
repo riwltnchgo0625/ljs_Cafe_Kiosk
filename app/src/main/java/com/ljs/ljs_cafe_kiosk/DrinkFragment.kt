@@ -45,10 +45,10 @@ class DrinkFragment : Fragment(), MenuAdapter.OnItemClickListener {
 
         //메뉴 리스트
         ljs_menuList = mutableListOf(
-            Menu("아이스티(복숭아)", 4000, R.drawable.main_coffee_logo),
-            Menu("아이스티(레몬)", 4000, R.drawable.icetea_remon),
-            Menu("딸기라떼", 3000, R.drawable.main_coffee_logo),
-            Menu("고구마라떼", 3500, R.drawable.main_coffee_logo)
+            Menu("아이스티(레몬)", 3500, R.drawable.icetea_remon),
+            Menu("아이스티(복숭아)", 3500, R.drawable.icetea_peach),
+            Menu("에이드(자몽)", 3500, R.drawable.grapefruit_ade),
+            Menu("라떼(녹차)", 3500, R.drawable.match_latte)
         )
         orderHistory = mutableListOf()
 

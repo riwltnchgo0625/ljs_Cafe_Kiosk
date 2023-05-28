@@ -14,6 +14,8 @@
         <activity
             android:name=".MenuActivity"
             android:exported="false" />
+        <activity android:name=".SelectPayMethodActivity"
+            android:exported="true"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

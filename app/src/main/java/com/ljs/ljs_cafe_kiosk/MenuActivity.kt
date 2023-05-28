@@ -2,7 +2,7 @@ package com.ljs.ljs_cafe_kiosk
 
 import Menu
 import android.annotation.SuppressLint
-import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
@@ -48,6 +48,14 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
         val recyclerView = findViewById<RecyclerView>(R.id.selected_menu_list)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        //스크롤뷰 옵션
+        val scrollView = findViewById<ScrollView>(R.id.scrollview)
+        scrollView.post {
+            // 스크롤 아래 포커스(아니 왜 안됨 수정 필요)
+            scrollView.fullScroll(View.FOCUS_DOWN)
+
+        }
+
         // 주문 리스트 초기화 버튼 초기화
         val allCancelButton = findViewById<Button>(R.id.all_cancel_btn)
         allCancelButton.setOnClickListener { cancelOrder() }
@@ -72,13 +80,27 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
         }.attach()
     }
 
-    @SuppressLint("MissingInflatedId")
+
+    //최종 주문내역 팝업
     private fun showOrderDetailsPopup() {
         val orderHistoryItems = adapter.getOrderHistory()
         val popupView = LayoutInflater.from(this).inflate(R.layout.popup_order_details, null)
         val tableLayout = popupView.findViewById<LinearLayout>(R.id.popup_table_layout)
 
         tableLayout.removeAllViews()
+
+        val cancelButton = popupView.findViewById<Button>(R.id.cancel_btn)
+        val payMethodButton = popupView.findViewById<Button>(R.id.pay_method_btn)
+
+
+        cancelButton.setOnClickListener {
+            popupWindow?.dismiss() // Close the popup window
+        }
+
+        payMethodButton.setOnClickListener {
+            var intent = Intent(this, SelectPayMethodActivity::class.java)
+            startActivity(intent)
+        }
 
         var totalAmount = 0
 
@@ -159,7 +181,6 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
         popupWindow = PopupWindow(popupView, widthSize, heightSize, true)
         popupWindow!!.elevation = 10f
         popupWindow!!.setBackgroundDrawable(ColorDrawable(Color.WHITE)) // Optionally, set the background drawable
-        popupWindow!!.animationStyle = R.style.CustomPopupWindowStyle
 
         // Show the PopupWindow
         popupWindow!!.showAtLocation(popupView, Gravity.CENTER, 0, 0)

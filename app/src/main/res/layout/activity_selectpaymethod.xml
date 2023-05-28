@@ -1,0 +1,64 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/gray">
+
+    <TextView
+        android:id="@+id/selectpay_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="결제 수단을 선택하세요."
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/selectpay_text"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        android:columnCount="1"
+        android:rowCount="2">
+
+        <Button
+            android:id="@+id/card_payment_btn"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:background="@drawable/pay_method_btn_shadow"
+            android:drawableStart="@drawable/resize_creditcard_img"
+            android:paddingStart="25dp"
+            android:paddingEnd="10dp"
+            android:text="카드\n(체크/신용)"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/barcode_payment_btn"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            android:background="@drawable/pay_method_btn_shadow"
+            android:drawableStart="@drawable/resize_barcode_img"
+            android:paddingStart="25dp"
+            android:paddingEnd="10dp"
+            android:text="디지털 쿠폰/교환권"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </GridLayout>
+
+</RelativeLayout>
