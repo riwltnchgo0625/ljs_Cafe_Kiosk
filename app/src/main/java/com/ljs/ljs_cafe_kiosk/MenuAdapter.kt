@@ -1,7 +1,6 @@
 package com.ljs.ljs_cafe_kiosk
 
 import Menu
-import android.content.Context
 import android.view.LayoutInflater
 
 import android.view.View
@@ -12,9 +11,9 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 
 class MenuAdapter(
-    private val context: FragmentActivity?,
-    private val menuList: List<Menu>,
-    private val itemClickListener: OnItemClickListener
+    private val ljs_context: FragmentActivity?,
+    private val ljs_menuList: List<Menu>,
+    private val ljs_itemClickListener: OnItemClickListener
 ) :
     RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
 
@@ -30,7 +29,7 @@ class MenuAdapter(
         }
 
         override fun onClick(view: View?) {
-            itemClickListener.onItemClick(adapterPosition)
+            ljs_itemClickListener.onItemClick(adapterPosition)
         }
     }
 
@@ -40,18 +39,18 @@ class MenuAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_menu, parent, false)
-        return ViewHolder(view)
+        val ljs_view = LayoutInflater.from(ljs_context).inflate(R.layout.item_menu, parent, false)
+        return ViewHolder(ljs_view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val menu = menuList[position]
-        holder.ljs_menuImage.setImageResource(menu.imageResource)
-        holder.ljs_menuName.text = menu.name
-        holder.ljs_menuPrice.text = menu.price.toString()
+        val ljs_menu = ljs_menuList[position]
+        holder.ljs_menuImage.setImageResource(ljs_menu.ljs_imageResource)
+        holder.ljs_menuName.text = ljs_menu.ljs_name
+        holder.ljs_menuPrice.text = ljs_menu.ljs_price.toString()
     }
 
     override fun getItemCount(): Int {
-        return menuList.size
+        return ljs_menuList.size
     }
 }

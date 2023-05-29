@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //테이크아웃 버튼 선택시
+        //포장하기 버튼
         val ljs_go_takeout_btn = findViewById<Button>(R.id.ljs_takeout_btn)
 
         ljs_go_takeout_btn.setOnClickListener {
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //매장 버튼 선택시
+        //먹고가기 버튼
         val ljs_go_store_btn = findViewById<Button>(R.id.ljs_store_btn)
 
         ljs_go_store_btn.setOnClickListener {

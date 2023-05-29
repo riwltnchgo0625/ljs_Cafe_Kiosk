@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
+    android:background="#E1000000"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -20,6 +20,20 @@
             android:textColor="@color/black"
             android:textSize="30dp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ljs_home_text1_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ljs_home_text1"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="5dp"
+            android:text="포장하기 또는 먹고가기을 선택해주세요!"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -27,18 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ljs_home_relative1"
-        android:layout_marginTop="15dp">
-
-        <TextView
-            android:id="@+id/ljs_home_text2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="주문을 선택하세요"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
+        android:layout_marginTop="20dp">
 
     </RelativeLayout>
 
@@ -59,7 +62,7 @@
             android:background="@drawable/main_btn"
             android:drawableTop="@drawable/resize_takeout_coffee_img"
             android:paddingTop="20dp"
-            android:text="포장\n (TAKE OUT)"
+            android:text="포장하기\n (TAKE OUT)"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -73,7 +76,7 @@
             android:background="@drawable/main_btn"
             android:drawableTop="@drawable/resize_dinein_coffee_img"
             android:paddingTop="20dp"
-            android:text="매장\n(DINE IN)"
+            android:text="먹고가기\n(DINE IN)"
             android:textSize="20dp"
             android:textStyle="bold" />
 

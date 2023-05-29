@@ -15,11 +15,11 @@ import androidx.recyclerview.widget.RecyclerView
 
 //커피 메뉴 페이지
 class CoffeeFragment : Fragment(), MenuAdapter.OnItemClickListener {
-    private lateinit var orderClickListener: OnOrderClickListener
+    private lateinit var ljs_orderClickListener: OnOrderClickListener
     private lateinit var ljs_recyclerView: RecyclerView
     private lateinit var ljs_adapter: MenuAdapter
     private lateinit var ljs_menuList: MutableList<Menu>
-    private lateinit var orderHistory: MutableList<OrderHistoryItem>
+    private lateinit var ljs_orderHistory: MutableList<OrderHistoryItem>
 
     interface OnOrderClickListener {
         fun onOrderClick(menu: Menu)
@@ -27,7 +27,7 @@ class CoffeeFragment : Fragment(), MenuAdapter.OnItemClickListener {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        orderClickListener = context as OnOrderClickListener
+        ljs_orderClickListener = context as OnOrderClickListener
     }
 
     @SuppressLint("RestrictedApi")
@@ -49,7 +49,7 @@ class CoffeeFragment : Fragment(), MenuAdapter.OnItemClickListener {
             Menu("카페라떼(ICE)", 3500, R.drawable.latte_ice),
             Menu("에소프레소", 2000, R.drawable.esopresso),
         )
-        orderHistory = mutableListOf()
+        ljs_orderHistory = mutableListOf()
 
         ljs_adapter = MenuAdapter(activity, ljs_menuList, this)
         ljs_recyclerView.adapter = ljs_adapter
@@ -59,8 +59,8 @@ class CoffeeFragment : Fragment(), MenuAdapter.OnItemClickListener {
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onItemClick(position: Int) {
-        val menu = ljs_menuList[position]
-        orderClickListener.onOrderClick(menu)
+        val ljs_menu = ljs_menuList[position]
+        ljs_orderClickListener.onOrderClick(ljs_menu)
     }
 }
 

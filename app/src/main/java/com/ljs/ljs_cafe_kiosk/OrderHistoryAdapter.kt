@@ -1,7 +1,6 @@
 package com.ljs.ljs_cafe_kiosk
 
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,32 +12,32 @@ import androidx.recyclerview.widget.RecyclerView
 class OrderHistoryAdapter(private val orderHistory: MutableList<OrderHistoryItem>) :
     RecyclerView.Adapter<OrderHistoryAdapter.ViewHolder>() {
 
-    var orderTotalPrice: Int = 0 // variable to keep track of the total price of the entire order
-    private lateinit var totalAmountTextView: TextView
+    var ljs_orderTotalPrice: Int = 0 // 결제 전체 값
+    private lateinit var ljs_totalAmountTextView: TextView
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
+        val ljs_view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_menu_order, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(ljs_view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = orderHistory[position]
-        holder.menuNameTextView.text = item.menuName
-        holder.menuPriceTextView.text = item.menuPrice.toString()
-        holder.priceTextView.text = item.menuPrice.toString()
-        holder.menuQuantityTextView.text = item.quantity.toString()
-        holder.menuPriceTextView.text = item.totalPrice.toString() // Update with the total price
+        val ljs_item = orderHistory[position]
+        holder.ljs_menuNameText.text = ljs_item.ljs_menuName
+        holder.ljs_menuPriceText.text = ljs_item.ljs_menuPrice.toString()
+        holder.ljs_priceText.text = ljs_item.ljs_menuPrice.toString()
+        holder.ljs_menuQuantityText.text = ljs_item.ljs_quantity.toString()
+        holder.ljs_menuPriceText.text = ljs_item.ljs_totalPrice.toString() // Update with the total price
 
-        holder.plusButton.setOnClickListener {
+        holder.ljs_plus_btn.setOnClickListener {
             increaseQuantity(position, holder)
 
         }
-        holder.minusButton.setOnClickListener {
+        holder.ljs_minus_btn.setOnClickListener {
             decreaseQuantity(position, holder)
 
         }
-        holder.cancelButton.setOnClickListener {
+        holder.ljs_cancle_btn.setOnClickListener {
             removeItem(position)
 
         }
@@ -53,28 +52,31 @@ class OrderHistoryAdapter(private val orderHistory: MutableList<OrderHistoryItem
         return orderHistory.size
     }
 
+    //수량 증가 버튼
     private fun increaseQuantity(position: Int, holder: ViewHolder) {
-        val item = orderHistory[position]
-        item.quantity++
-        item.totalPrice = item.menuPrice * item.quantity // update the total price of the item
-        holder.menuQuantityTextView.text = item.quantity.toString()
-        holder.menuPriceTextView.text = item.totalPrice.toString()
+        val ljs_item = orderHistory[position]
+        ljs_item.ljs_quantity++
+        ljs_item.ljs_totalPrice = ljs_item.ljs_menuPrice * ljs_item.ljs_quantity // update the total price of the item
+        holder.ljs_menuQuantityText.text = ljs_item.ljs_quantity.toString()
+        holder.ljs_menuPriceText.text = ljs_item.ljs_totalPrice.toString()
         updateOrderTotal()
     }
 
+    //수량 감소버튼
     private fun decreaseQuantity(position: Int, holder: ViewHolder) {
-        val item = orderHistory[position]
-        if (item.quantity > 1) {
-            item.quantity--
-            item.totalPrice -= item.menuPrice  // Accumulate the product value
-            holder.menuQuantityTextView.text = item.quantity.toString()
-            holder.menuPriceTextView.text = item.totalPrice.toString()
+        val ljs_item = orderHistory[position]
+        if (ljs_item.ljs_quantity > 1) {
+            ljs_item.ljs_quantity--
+            ljs_item.ljs_totalPrice -= ljs_item.ljs_menuPrice  // Accumulate the product value
+            holder.ljs_menuQuantityText.text = ljs_item.ljs_quantity.toString()
+            holder.ljs_menuPriceText.text = ljs_item.ljs_totalPrice.toString()
             updateOrderTotal()
         }
     }
 
+    //삭제버튼 눌렀을때
     private fun removeItem(position: Int) {
-        orderTotalPrice -= orderHistory[position].totalPrice // subtract the price of the item being removed from the order total
+        ljs_orderTotalPrice -= orderHistory[position].ljs_totalPrice // subtract the price of the item being removed from the order total
         orderHistory.removeAt(position)
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, orderHistory.size)
@@ -82,27 +84,28 @@ class OrderHistoryAdapter(private val orderHistory: MutableList<OrderHistoryItem
     }
 
 
+    //주문 총액
     private fun updateOrderTotal() {
-        if (::totalAmountTextView.isInitialized) {
-            val totalAmount = orderHistory.sumBy { it.totalPrice }
-            totalAmountTextView.text = totalAmount.toString()
+        if (::ljs_totalAmountTextView.isInitialized) {
+            val ljs_totalAmount = orderHistory.sumBy { it.ljs_totalPrice }
+            ljs_totalAmountTextView.text = ljs_totalAmount.toString()
         }
     }
 
 
     fun setTotalAmountTextView(textView: TextView) {
-        totalAmountTextView = textView
+        ljs_totalAmountTextView = textView
         updateOrderTotal()
     }
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val menuNameTextView: TextView = itemView.findViewById(R.id.ljs_order_list_name)
-        val menuPriceTextView: TextView = itemView.findViewById(R.id.ljs_order_list_price)
-        val plusButton: Button = itemView.findViewById(R.id.ljs_order_list_plus)
-        val minusButton: Button = itemView.findViewById(R.id.ljs_order_list_minus)
-        val cancelButton: Button = itemView.findViewById(R.id.ljs_order_list_cancel)
-        val priceTextView: TextView = itemView.findViewById(R.id.ljs_order_list_price)
-        val menuQuantityTextView: TextView = itemView.findViewById(R.id.ljs_order_list_qua)
+        val ljs_menuNameText: TextView = itemView.findViewById(R.id.ljs_order_list_name)
+        val ljs_menuPriceText: TextView = itemView.findViewById(R.id.ljs_order_list_price)
+        val ljs_plus_btn: Button = itemView.findViewById(R.id.ljs_order_list_plus)
+        val ljs_minus_btn: Button = itemView.findViewById(R.id.ljs_order_list_minus)
+        val ljs_cancle_btn: Button = itemView.findViewById(R.id.ljs_order_list_cancel)
+        val ljs_priceText: TextView = itemView.findViewById(R.id.ljs_order_list_price)
+        val ljs_menuQuantityText: TextView = itemView.findViewById(R.id.ljs_order_list_qua)
     }
 }

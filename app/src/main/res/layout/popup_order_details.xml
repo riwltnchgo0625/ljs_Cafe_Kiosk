@@ -2,7 +2,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
     android:padding="16dp">
 
     <TextView
@@ -60,7 +59,6 @@
 
     </TableLayout>
 
-    <!-- Spacer to push the total amount to the bottom -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="220dp">
@@ -87,7 +85,7 @@
                         android:padding="1dp"
                         android:text="아메리카노(HOT)" />
 
-                    <!-- Quantity -->
+
                     <TextView
                         android:id="@+id/popup_quantity"
                         android:layout_width="0dp"
@@ -96,7 +94,7 @@
                         android:padding="1dp"
                         android:text="1" />
 
-                    <!-- Price -->
+
                     <TextView
                         android:id="@+id/popup_menu_price"
                         android:layout_width="0dp"
@@ -121,7 +119,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="9dp"
         android:orientation="horizontal">
 
         <TextView
@@ -130,7 +128,7 @@
             android:layout_marginEnd="10dp"
             android:layout_weight="2"
             android:gravity="end"
-            android:text="총 액"
+            android:text="결제할 금액"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold" />

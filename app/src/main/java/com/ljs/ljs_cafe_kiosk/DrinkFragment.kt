@@ -11,18 +11,17 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.GridLayoutManager
 
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 //커피 외 음료 페이지
 
 class DrinkFragment : Fragment(), MenuAdapter.OnItemClickListener {
 
-    private lateinit var orderClickListener: OnOrderClickListener
+    private lateinit var ljs_orderClickListener: OnOrderClickListener
     private lateinit var ljs_recyclerView: RecyclerView
     private lateinit var ljs_adapter: MenuAdapter
     private lateinit var ljs_menuList: MutableList<Menu>
-    private lateinit var orderHistory: MutableList<OrderHistoryItem>
+    private lateinit var ljs_orderHistory: MutableList<OrderHistoryItem>
 
 
     interface OnOrderClickListener {
@@ -31,7 +30,7 @@ class DrinkFragment : Fragment(), MenuAdapter.OnItemClickListener {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        orderClickListener = context as OnOrderClickListener
+        ljs_orderClickListener = context as OnOrderClickListener
     }
 
     override fun onCreateView(
@@ -50,7 +49,7 @@ class DrinkFragment : Fragment(), MenuAdapter.OnItemClickListener {
             Menu("에이드(자몽)", 3500, R.drawable.grapefruit_ade),
             Menu("라떼(녹차)", 3500, R.drawable.match_latte)
         )
-        orderHistory = mutableListOf()
+        ljs_orderHistory = mutableListOf()
 
         ljs_adapter = MenuAdapter(activity, ljs_menuList, this)
         ljs_recyclerView.adapter = ljs_adapter
@@ -60,8 +59,8 @@ class DrinkFragment : Fragment(), MenuAdapter.OnItemClickListener {
     @SuppressLint("Range")
     override fun onItemClick(position: Int) {
         //메뉴 아이템 클릭시 이벤트
-        val menu = ljs_menuList[position]
-        orderClickListener.onOrderClick(menu)
+        val ljs_menu = ljs_menuList[position]
+        ljs_orderClickListener.onOrderClick(ljs_menu)
 
 
     }

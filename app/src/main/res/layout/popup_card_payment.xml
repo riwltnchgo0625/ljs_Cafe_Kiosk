@@ -44,7 +44,7 @@
 
 
         <Button
-            android:id="@+id/cancel_btn"
+            android:id="@+id/card_cancel_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
@@ -57,7 +57,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/ok_btn"
+            android:id="@+id/card_ok_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"

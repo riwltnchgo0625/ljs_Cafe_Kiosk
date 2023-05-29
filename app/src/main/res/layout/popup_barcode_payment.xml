@@ -43,7 +43,7 @@
 
 
         <Button
-            android:id="@+id/cancel_btn"
+            android:id="@+id/barcode_cancel_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
@@ -56,7 +56,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/ok_btn"
+            android:id="@+id/barcode_ok_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
