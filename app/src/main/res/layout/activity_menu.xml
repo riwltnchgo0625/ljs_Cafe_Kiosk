@@ -19,6 +19,7 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/ljs_tabLayout"
         style="@style/TabText"
+        app:tabTextColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/white"
@@ -118,7 +119,7 @@
             android:layout_width="wrap_content"
             android:layout_height="220dp"
             android:layout_gravity="bottom"
-            android:backgroundTint="@color/backgroud1"
+            android:backgroundTint="@color/black"
             android:clipToPadding="false"
             android:orientation="vertical">
 

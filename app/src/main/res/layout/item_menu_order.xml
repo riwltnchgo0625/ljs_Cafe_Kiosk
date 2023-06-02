@@ -46,12 +46,11 @@
 
     <TextView
         android:id="@+id/ljs_order_list_qua"
-        android:layout_width="5dp"
+        android:layout_width="25dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_weight="1"
         android:gravity="center"
-        android:text="1"
+        android:text="10"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold" />

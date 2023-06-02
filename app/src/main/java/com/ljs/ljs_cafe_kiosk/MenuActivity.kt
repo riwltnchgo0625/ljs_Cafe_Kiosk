@@ -7,6 +7,7 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.view.*
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -27,6 +28,8 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
     private lateinit var ljs_adapter: OrderHistoryAdapter
     private lateinit var ljs_orderTotalTextView: TextView
     private var ljs_popupWindow: PopupWindow? = null
+
+    private var ljs_dialog: AlertDialog? = null
 
     @SuppressLint("ClickableViewAccessibility", "MissingInflatedId", "CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,9 +52,6 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
         //스크롤뷰 옵션
         val ljs_scrollView = findViewById<ScrollView>(R.id.scrollview)
         ljs_scrollView.post {
-            // 스크롤 아래 포커스(아니 왜 안됨 수정 필요)
-            ljs_scrollView.fullScroll(View.FOCUS_DOWN)
-
         }
 
         // 주문 리스트 초기화 버튼 초기화
@@ -70,7 +70,7 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
             if (ljs_orderHistory.isEmpty()) {
                 Toast.makeText(this, "메뉴를 선택해 주세요!", Toast.LENGTH_SHORT).show()
             } else {
-                showOrderDetailsPopup()
+                showOrderDetailsDialog()
             }
         }
 
@@ -92,26 +92,27 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
 
 
     //최종 주문내역 팝업
-    private fun showOrderDetailsPopup() {
+    @SuppressLint("ClickableViewAccessibility")
+    private fun showOrderDetailsDialog() {
         val ljs_orderHistoryItems = ljs_adapter.getOrderHistory()
-        val ljs_popupView = LayoutInflater.from(this).inflate(R.layout.popup_order_details, null)
-        val ljs_tableLayout = ljs_popupView.findViewById<LinearLayout>(R.id.popup_table_layout)
+        val ljs_dialogView = LayoutInflater.from(this).inflate(R.layout.popup_order_details, null)
+        val ljs_tableLayout = ljs_dialogView.findViewById<LinearLayout>(R.id.popup_table_layout)
 
         ljs_tableLayout.removeAllViews()
 
-        val ljs_cancel_btn = ljs_popupView.findViewById<Button>(R.id.cancel_btn)
-        val ljs_payment_btn = ljs_popupView.findViewById<Button>(R.id.pay_method_btn)
+        val ljs_cancelBtn = ljs_dialogView.findViewById<Button>(R.id.cancel_btn)
+        val ljs_paymentBtn = ljs_dialogView.findViewById<Button>(R.id.pay_method_btn)
 
-        //취소버튼
-        ljs_cancel_btn.setOnClickListener {
-            ljs_popupWindow?.dismiss() // Close the popup window
+        // 취소 버튼
+        ljs_cancelBtn.setOnClickListener {
+            ljs_dialog?.dismiss()
         }
 
-        //결제 버튼
-        ljs_payment_btn.setOnClickListener {
+        // 결제 버튼
+        ljs_paymentBtn.setOnClickListener {
             var intent = Intent(this, SelectPayMethodActivity::class.java)
             startActivity(intent)
-            ljs_popupWindow?.dismiss()
+            ljs_dialog?.dismiss()
         }
 
         var ljs_totalAmount = 0
@@ -125,17 +126,17 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
             textSize: Float,
             isBold: Boolean
         ): TextView {
-            val textView = TextView(this)
-            textView.layoutParams =
+            val ljs_textView = TextView(this)
+            ljs_textView.layoutParams =
                 TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, weight)
-            textView.gravity = gravity
-            textView.text = text
-            textView.setTextColor(ContextCompat.getColor(this, textColor))
-            textView.textSize = textSize
+            ljs_textView.gravity = gravity
+            ljs_textView.text = text
+            ljs_textView.setTextColor(ContextCompat.getColor(this, textColor))
+            ljs_textView.textSize = textSize
             if (isBold) {
-                textView.setTypeface(null, Typeface.BOLD)
+                ljs_textView.setTypeface(null, Typeface.BOLD)
             }
-            return textView
+            return ljs_textView
         }
 
         // 테이블 row추가
@@ -184,19 +185,26 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
         }
 
         // 결제 총액
-        val ljs_totalAmont = ljs_popupView.findViewById<TextView>(R.id.popup_total_amount)
-        ljs_totalAmont.text = ljs_totalAmount.toString()
+        val ljs_totalAmountTextView = ljs_dialogView.findViewById<TextView>(R.id.popup_total_amount)
+        ljs_totalAmountTextView.text = ljs_totalAmount.toString()
 
-        //팝업 사이즈
-        val widthSize = 900
-        val heightSize = 1200
+        val dialogBuilder = AlertDialog.Builder(this)
+            .setView(ljs_dialogView)
+            .setCancelable(false)
 
-       //팝업 옵션
-        ljs_popupWindow = PopupWindow(ljs_popupView, widthSize, heightSize, true)
-        ljs_popupWindow!!.elevation = 10f
-        ljs_popupWindow!!.setBackgroundDrawable(ContextCompat.getDrawable(this@MenuActivity,R.drawable.popup_round_background))
-        ljs_popupWindow!!.showAtLocation(ljs_popupView, Gravity.CENTER, 0, 0)
+
+        ljs_dialog = dialogBuilder.create()
+        ljs_dialog?.window?.setBackgroundDrawableResource(R.drawable.popup_round_background)
+
+        ljs_dialog?.show()
+
+        // Override the positive button click listener to dismiss the dialog
+        ljs_dialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.setOnClickListener {
+            // Handle positive button click if needed
+            ljs_dialog?.dismiss()
+        }
     }
+
 
     override fun onDestroy() {
         ljs_popupWindow?.dismiss()
@@ -215,14 +223,14 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onOrderClick(menu: Menu) {
-        val existingItem = ljs_orderHistory.find { it.ljs_menuName == menu.ljs_name }
+        val ljs_existingItem = ljs_orderHistory.find { it.ljs_menuName == menu.ljs_name }
 
-        if (existingItem != null) {
-            existingItem.ljs_quantity++
-            existingItem.ljs_totalPrice = existingItem.ljs_menuPrice * existingItem.ljs_quantity
+        if (ljs_existingItem != null) {
+            ljs_existingItem.ljs_quantity++
+            ljs_existingItem.ljs_totalPrice = ljs_existingItem.ljs_menuPrice * ljs_existingItem.ljs_quantity
         } else {
-            val orderItem = OrderHistoryItem(menu.ljs_name, menu.ljs_price, 1)
-            ljs_orderHistory.add(orderItem)
+            val ljs_orderItem = OrderHistoryItem(menu.ljs_name, menu.ljs_price, 1)
+            ljs_orderHistory.add(ljs_orderItem)
         }
 
         ljs_adapter.notifyDataSetChanged()

@@ -44,7 +44,6 @@ class DessertFragment : Fragment(), MenuAdapter.OnItemClickListener {
         ljs_recyclerView = ljs_rootView.findViewById(R.id.menu_dessert_list)
         ljs_recyclerView.layoutManager = GridLayoutManager(activity, 2)
 
-
         //메뉴 리스트
         ljs_menuList = mutableListOf(
             Menu("초코케이크", 3500, R.drawable.choco_cake),

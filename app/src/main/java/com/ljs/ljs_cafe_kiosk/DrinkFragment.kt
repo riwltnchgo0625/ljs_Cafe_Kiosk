@@ -23,7 +23,6 @@ class DrinkFragment : Fragment(), MenuAdapter.OnItemClickListener {
     private lateinit var ljs_menuList: MutableList<Menu>
     private lateinit var ljs_orderHistory: MutableList<OrderHistoryItem>
 
-
     interface OnOrderClickListener {
         fun onOrderClick(menu: Menu)
     }

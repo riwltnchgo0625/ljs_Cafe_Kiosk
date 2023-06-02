@@ -14,7 +14,6 @@ data class OrderHistoryItem
         other as OrderHistoryItem
 
         if (ljs_menuName != other.ljs_menuName) return false
-
         return true
     }
 

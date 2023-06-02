@@ -20,9 +20,9 @@
             android:layout_gravity="bottom"
             android:layout_marginTop="50dp"
             android:gravity="center"
-            android:textColor="@color/dark_gray"
-            android:textStyle="bold"
-            android:text="상하 스크롤로 전체 메뉴를 확인하세요." />
+            android:text="상하 스크롤로 전체 메뉴를 확인하세요."
+            android:textColor="@color/gray1"
+            android:textStyle="bold" />
 
         <ScrollView
             android:layout_width="match_parent"
