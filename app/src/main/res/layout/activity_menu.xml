@@ -19,13 +19,13 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/ljs_tabLayout"
         style="@style/TabText"
-        app:tabTextColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/white"
         android:textAlignment="center"
         app:tabGravity="fill"
         app:tabMode="fixed"
+        app:tabTextColor="@color/black"
         tools:ignore="MissingConstraints">
 
 

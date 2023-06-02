@@ -1,22 +1,20 @@
 package com.ljs.ljs_cafe_kiosk
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
-import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.WindowManager
 import android.widget.Button
-import android.widget.PopupWindow
-import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
 class SelectPayMethodActivity : AppCompatActivity() {
 
-    private var ljs_popupWindow: PopupWindow? = null
+    private var ljs_dialog: Dialog? = null
+    private var ljs_waitingDialog: Dialog? = null
 
     @SuppressLint("MissingInflatedId", "InflateParams")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,115 +23,162 @@ class SelectPayMethodActivity : AppCompatActivity() {
 
         val ljs_card_pay_btn = findViewById<Button>(R.id.card_payment_btn)
         ljs_card_pay_btn.setOnClickListener {
-            val ljs_inflater = LayoutInflater.from(this@SelectPayMethodActivity)
-            val ljs_popupView = ljs_inflater.inflate(R.layout.popup_card_payment, null)
-
-            val ljs_widthSize = 900
-            val ljs_heightSize = 1200
-            ljs_popupWindow = PopupWindow(ljs_popupView, ljs_widthSize, ljs_heightSize, true)
-            ljs_popupWindow!!.elevation = 10f
-            ljs_popupWindow!!.setBackgroundDrawable(ContextCompat.getDrawable(this@SelectPayMethodActivity,R.drawable.popup_round_background))
-            ljs_popupWindow!!.showAtLocation(ljs_popupView, Gravity.CENTER, 0, 0)
-
-            val ljs_cancel_btn = ljs_popupView.findViewById<Button>(R.id.card_cancel_btn)
-            val ljs_ok_btn = ljs_popupView.findViewById<Button>(R.id.card_ok_btn)
-
-            ljs_cancel_btn.setOnClickListener {
-                ljs_popupWindow?.dismiss()
-            }
-
-            ljs_ok_btn.setOnClickListener {
-                ljs_popupWindow?.dismiss()
-
-                // 결제대기창 팝업
-                val ljs_waitingPopupView = ljs_inflater.inflate(R.layout.popup_waiting_pay, null)
-                val waitingPopupWindow = PopupWindow(ljs_waitingPopupView, ljs_widthSize, ljs_heightSize, true)
-                waitingPopupWindow.elevation = 10f
-                waitingPopupWindow.setBackgroundDrawable(ColorDrawable(Color.WHITE))
-                waitingPopupWindow.showAtLocation(ljs_waitingPopupView, Gravity.CENTER, 0, 0)
-
-                val waitingProgressBar =
-                    ljs_waitingPopupView.findViewById<ProgressBar>(R.id.progressBar)
-
-                Handler().postDelayed({
-                    waitingPopupWindow.dismiss()
-
-                    val ljs_completePopupView = ljs_inflater.inflate(R.layout.popup_complete, null)
-                    val ljs_completePopupWindow =
-                        PopupWindow(ljs_completePopupView, ljs_widthSize, ljs_heightSize, true)
-                    ljs_completePopupWindow.elevation = 10f
-                    ljs_completePopupWindow.setBackgroundDrawable(ColorDrawable(Color.WHITE))
-                    ljs_completePopupWindow.showAtLocation(ljs_completePopupView, Gravity.CENTER, 0, 0)
-
-                    val ljs_goMain_btn = ljs_completePopupView.findViewById<Button>(R.id.go_main)
-                    ljs_goMain_btn.setOnClickListener {
-                        val ljs_intent = Intent(this@SelectPayMethodActivity, MainActivity::class.java)
-                        startActivity(ljs_intent)
-
-                    }
-                }, 3000)
-            }
-
+            showCardPaymentDialog()
         }
-
 
         val ljs_barcode_pay_btn = findViewById<Button>(R.id.barcode_payment_btn)
         ljs_barcode_pay_btn.setOnClickListener {
-            val ljs_inflater = LayoutInflater.from(this@SelectPayMethodActivity)
-            val ljs_popupView = ljs_inflater.inflate(R.layout.popup_barcode_payment, null)
-
-            val ljs_widthSize = 900
-            val ljs_heightSize = 1200
-
-            ljs_popupWindow = PopupWindow(ljs_popupView, ljs_widthSize, ljs_heightSize, true)
-            ljs_popupWindow!!.elevation = 10f
-            ljs_popupWindow!!.setBackgroundDrawable(ColorDrawable(Color.WHITE))
-            ljs_popupWindow!!.showAtLocation(ljs_popupView, Gravity.CENTER, 0, 0)
-
-            val ljs_cancel_btn = ljs_popupView.findViewById<Button>(R.id.barcode_cancel_btn)
-            val ljs_ok_btn = ljs_popupView.findViewById<Button>(R.id.barcode_ok_btn)
-
-            ljs_cancel_btn.setOnClickListener {
-                ljs_popupWindow?.dismiss()
-            }
-
-            ljs_ok_btn.setOnClickListener {
-                ljs_popupWindow?.dismiss()
-
-                // waitingpopup
-                val ljs_waitingPopupView = ljs_inflater.inflate(R.layout.popup_waiting_pay, null)
-                val ljs_waitingPopupWindow = PopupWindow(ljs_waitingPopupView, ljs_widthSize, ljs_heightSize, true)
-                ljs_waitingPopupWindow.elevation = 10f
-                ljs_waitingPopupWindow.setBackgroundDrawable(ColorDrawable(Color.WHITE))
-                ljs_waitingPopupWindow.showAtLocation(ljs_waitingPopupView, Gravity.CENTER, 0, 0)
-
-                val waitingProgressBar =
-                    ljs_waitingPopupView.findViewById<ProgressBar>(R.id.progressBar)
-
-                Handler().postDelayed({
-                    ljs_waitingPopupWindow.dismiss()
-
-                    // Show the popup_complete.xml popup window
-                    val ljs_completePopupView = ljs_inflater.inflate(R.layout.popup_complete, null)
-                    val ljs_completePopupWindow =
-                        PopupWindow(ljs_completePopupView, ljs_widthSize, ljs_heightSize, true)
-                    ljs_completePopupWindow.elevation = 10f
-                    ljs_completePopupWindow.setBackgroundDrawable(ColorDrawable(Color.WHITE))
-                    ljs_completePopupWindow.showAtLocation(ljs_completePopupView, Gravity.CENTER, 0, 0)
-
-                    val ljs_goMain_btn = ljs_completePopupView.findViewById<Button>(R.id.go_main)
-                    ljs_goMain_btn.setOnClickListener {
-                        // Navigate to MainActivity
-                        val intent = Intent(this@SelectPayMethodActivity, MainActivity::class.java)
-                        startActivity(intent)
-
-                    }
-                }, 3000)
-            }
+            showBarcodePaymentDialog()
         }
-
-
     }
 
+    private fun showCardPaymentDialog() {
+        // Set the background of the activity to a dark color
+        val ljs_layoutParams = window.attributes
+        ljs_layoutParams.dimAmount = 0.8f
+        window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+        window.attributes = ljs_layoutParams
 
+        val ljs_dialogView = LayoutInflater.from(this).inflate(R.layout.popup_card_payment, null)
+        ljs_dialog = Dialog(this)
+        ljs_dialog?.setContentView(ljs_dialogView)
+        ljs_dialog?.setCanceledOnTouchOutside(false)
+
+        // Set dialog size
+        val ljs_window = ljs_dialog?.window
+        ljs_window?.setLayout(900, 1200)
+
+        // Set dialog background shape
+        ljs_window?.setBackgroundDrawable(
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.popup_round_background
+            )
+        )
+
+        // Show dialog
+        ljs_dialog?.show()
+
+        // Handle button click in card payment popup
+        val ljs_cancel_btn = ljs_dialogView.findViewById<Button>(R.id.card_cancel_btn)
+        val ljs_ok_btn = ljs_dialogView.findViewById<Button>(R.id.card_ok_btn)
+
+        ljs_cancel_btn.setOnClickListener {
+            ljs_dialog?.dismiss()
+        }
+
+        ljs_ok_btn.setOnClickListener {
+            ljs_dialog?.dismiss()
+            showWaitingPopup()
+
+            Handler().postDelayed({
+                ljs_waitingDialog?.dismiss()
+                showCompletePopup()
+            }, 3000)
+        }
+    }
+
+    private fun showBarcodePaymentDialog() {
+        val ljs_layoutParams = window.attributes
+        ljs_layoutParams.dimAmount = 0.8f
+        window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+        window.attributes = ljs_layoutParams
+
+        val ljs_dialogView = LayoutInflater.from(this).inflate(R.layout.popup_barcode_payment, null)
+        ljs_dialog = Dialog(this)
+        ljs_dialog?.setContentView(ljs_dialogView)
+        ljs_dialog?.setCanceledOnTouchOutside(false)
+
+
+        // Set dialog size
+        val ljs_window = ljs_dialog?.window
+        ljs_window?.setLayout(900, 1200)
+
+        ljs_dialog?.window?.setBackgroundDrawableResource(R.drawable.popup_round_background)
+
+        // Show dialog
+        ljs_dialog?.show()
+
+        // Handle button click in barcode payment popup
+        val ljs_cancel_btn = ljs_dialogView.findViewById<Button>(R.id.barcode_cancel_btn)
+        val ljs_ok_btn = ljs_dialogView.findViewById<Button>(R.id.barcode_ok_btn)
+
+        ljs_cancel_btn.setOnClickListener {
+            ljs_dialog?.dismiss()
+        }
+
+        ljs_ok_btn.setOnClickListener {
+            ljs_dialog?.dismiss()
+            showWaitingPopup()
+
+            Handler().postDelayed({
+                ljs_waitingDialog?.dismiss()
+                showCompletePopup()
+            }, 3000)
+        }
+    }
+
+    private fun showWaitingPopup() {
+
+        val layoutParams = window.attributes
+        layoutParams.dimAmount = 0.8f
+        window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+        window.attributes = layoutParams
+
+        val ljs_dialogView = LayoutInflater.from(this).inflate(R.layout.popup_waiting_pay, null)
+        ljs_waitingDialog = Dialog(this)
+        ljs_waitingDialog?.setContentView(ljs_dialogView)
+        ljs_waitingDialog?.window?.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+        )
+
+
+        val window = ljs_waitingDialog?.window
+        window?.setLayout(900, 800)
+
+        ljs_waitingDialog?.window?.setBackgroundDrawableResource(R.drawable.popup_round_background)
+
+        // Show dialog
+        ljs_waitingDialog?.show()
+    }
+
+    private fun showCompletePopup() {
+
+        val layoutParams = window.attributes
+        layoutParams.dimAmount = 0.8f
+        window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+        window.attributes = layoutParams
+
+        val ljs_dialogView = LayoutInflater.from(this).inflate(R.layout.popup_complete, null)
+        ljs_dialog = Dialog(this)
+        ljs_dialog?.setContentView(ljs_dialogView)
+        ljs_dialog?.window?.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+        )
+
+
+        // Set dialog size
+        val window = ljs_dialog?.window
+        window?.setLayout(900, 800)
+
+        ljs_dialog?.window?.setBackgroundDrawableResource(R.drawable.popup_round_background)
+
+        // Show dialog
+        ljs_dialog?.show()
+
+        // Handle button click in complete popup
+        val ljs_goMain_btn = ljs_dialogView.findViewById<Button>(R.id.go_main)
+        ljs_goMain_btn.setOnClickListener {
+            val intent = Intent(this@SelectPayMethodActivity, MainActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ljs_dialog?.dismiss()
+        ljs_waitingDialog?.dismiss()
+    }
 }

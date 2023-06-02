@@ -6,7 +6,7 @@ data class OrderHistoryItem
     var ljs_menuPrice: Int,
     var ljs_quantity: Int = 1,
     var ljs_totalPrice: Int = ljs_menuPrice
-){
+) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

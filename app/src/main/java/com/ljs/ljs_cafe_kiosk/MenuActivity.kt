@@ -27,7 +27,6 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
     private lateinit var ljs_recyclerView: RecyclerView
     private lateinit var ljs_adapter: OrderHistoryAdapter
     private lateinit var ljs_orderTotalTextView: TextView
-    private var ljs_popupWindow: PopupWindow? = null
 
     private var ljs_dialog: AlertDialog? = null
 
@@ -165,7 +164,7 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
                 true
             )
             val ljs_totalPriceText = createTextView(
-                orderItem.ljs_totalPrice.toString(),
+                orderItem.ljs_totalPrice.toString() + '원',
                 1f,
                 Gravity.CENTER,
                 R.color.main3,
@@ -188,12 +187,12 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
         val ljs_totalAmountTextView = ljs_dialogView.findViewById<TextView>(R.id.popup_total_amount)
         ljs_totalAmountTextView.text = ljs_totalAmount.toString()
 
-        val dialogBuilder = AlertDialog.Builder(this)
+        val ljs_dialogBuilder = AlertDialog.Builder(this)
             .setView(ljs_dialogView)
             .setCancelable(false)
 
 
-        ljs_dialog = dialogBuilder.create()
+        ljs_dialog = ljs_dialogBuilder.create()
         ljs_dialog?.window?.setBackgroundDrawableResource(R.drawable.popup_round_background)
 
         ljs_dialog?.show()
@@ -205,11 +204,6 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
         }
     }
 
-
-    override fun onDestroy() {
-        ljs_popupWindow?.dismiss()
-        super.onDestroy()
-    }
 
     @SuppressLint("NotifyDataSetChanged")
     private fun cancelOrder() {
@@ -227,7 +221,8 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
 
         if (ljs_existingItem != null) {
             ljs_existingItem.ljs_quantity++
-            ljs_existingItem.ljs_totalPrice = ljs_existingItem.ljs_menuPrice * ljs_existingItem.ljs_quantity
+            ljs_existingItem.ljs_totalPrice =
+                ljs_existingItem.ljs_menuPrice * ljs_existingItem.ljs_quantity
         } else {
             val ljs_orderItem = OrderHistoryItem(menu.ljs_name, menu.ljs_price, 1)
             ljs_orderHistory.add(ljs_orderItem)
