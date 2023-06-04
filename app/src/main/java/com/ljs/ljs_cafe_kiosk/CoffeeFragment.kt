@@ -49,7 +49,7 @@ class CoffeeFragment : Fragment(), MenuAdapter.OnItemClickListener {
             Menu("카페라떼(ICE)", 3500, R.drawable.latte_ice),
             Menu("에소프레소", 2000, R.drawable.esopresso),
         )
-        ljs_orderHistory = mutableListOf()
+       ljs_orderHistory = mutableListOf()
 
         ljs_adapter = MenuAdapter(activity, ljs_menuList, this)
         ljs_recyclerView.adapter = ljs_adapter

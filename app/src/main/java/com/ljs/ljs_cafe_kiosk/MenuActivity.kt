@@ -197,9 +197,7 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
 
         ljs_dialog?.show()
 
-        // Override the positive button click listener to dismiss the dialog
         ljs_dialog?.getButton(AlertDialog.BUTTON_POSITIVE)?.setOnClickListener {
-            // Handle positive button click if needed
             ljs_dialog?.dismiss()
         }
     }
