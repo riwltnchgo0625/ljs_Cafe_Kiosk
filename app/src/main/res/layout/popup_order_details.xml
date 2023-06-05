@@ -79,7 +79,6 @@
 
                 <TableRow>
 
-                    <!-- Product name -->
                     <TextView
                         android:id="@+id/popup_product_name"
                         android:layout_width="0dp"

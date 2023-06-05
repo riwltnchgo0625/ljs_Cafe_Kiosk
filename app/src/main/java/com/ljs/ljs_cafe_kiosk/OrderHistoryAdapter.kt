@@ -28,7 +28,7 @@ class OrderHistoryAdapter(private val orderHistory: MutableList<OrderHistoryItem
         holder.ljs_priceText.text = ljs_item.ljs_menuPrice.toString()
         holder.ljs_menuQuantityText.text = ljs_item.ljs_quantity.toString()
         holder.ljs_menuPriceText.text =
-            ljs_item.ljs_totalPrice.toString() // Update with the total price
+            ljs_item.ljs_totalPrice.toString()
 
         holder.ljs_plus_btn.setOnClickListener {
             increaseQuantity(position, holder)
@@ -58,7 +58,7 @@ class OrderHistoryAdapter(private val orderHistory: MutableList<OrderHistoryItem
         val ljs_item = orderHistory[position]
         ljs_item.ljs_quantity++
         ljs_item.ljs_totalPrice =
-            ljs_item.ljs_menuPrice * ljs_item.ljs_quantity // update the total price of the item
+            ljs_item.ljs_menuPrice * ljs_item.ljs_quantity
         holder.ljs_menuQuantityText.text = ljs_item.ljs_quantity.toString()
         holder.ljs_menuPriceText.text = ljs_item.ljs_totalPrice.toString()
         updateOrderTotal()
@@ -69,7 +69,7 @@ class OrderHistoryAdapter(private val orderHistory: MutableList<OrderHistoryItem
         val ljs_item = orderHistory[position]
         if (ljs_item.ljs_quantity > 1) {
             ljs_item.ljs_quantity--
-            ljs_item.ljs_totalPrice -= ljs_item.ljs_menuPrice  // Accumulate the product value
+            ljs_item.ljs_totalPrice -= ljs_item.ljs_menuPrice
             holder.ljs_menuQuantityText.text = ljs_item.ljs_quantity.toString()
             holder.ljs_menuPriceText.text = ljs_item.ljs_totalPrice.toString()
             updateOrderTotal()
@@ -78,7 +78,7 @@ class OrderHistoryAdapter(private val orderHistory: MutableList<OrderHistoryItem
 
     //삭제버튼 눌렀을때
     private fun removeItem(position: Int) {
-        ljs_orderTotalPrice -= orderHistory[position].ljs_totalPrice // subtract the price of the item being removed from the order total
+        ljs_orderTotalPrice -= orderHistory[position].ljs_totalPrice
         orderHistory.removeAt(position)
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, orderHistory.size)
