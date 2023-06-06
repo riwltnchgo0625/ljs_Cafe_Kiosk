@@ -17,9 +17,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var handler: Handler
     private lateinit var runnable: Runnable
 
-    companion object {
-        private const val SLIDE_DURATION = 800 // 슬라이드 애니메이션의 지속 시간 (밀리초)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         handler.postDelayed(runnable, 4500)
     }
 
-    // Set up click listeners for the buttons
+    // 버튼 클릭
     private fun setupButtons() {
         val ljs_go_takeout_btn = findViewById<Button>(R.id.ljs_takeout_btn)
         val ljs_go_store_btn = findViewById<Button>(R.id.ljs_store_btn)

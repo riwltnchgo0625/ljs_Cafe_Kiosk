@@ -33,7 +33,6 @@ class SelectPayMethodActivity : AppCompatActivity() {
     }
 
     private fun showCardPaymentDialog() {
-        // Set the background of the activity to a dark color
         val ljs_layoutParams = window.attributes
         ljs_layoutParams.dimAmount = 0.8f
         window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
@@ -44,11 +43,10 @@ class SelectPayMethodActivity : AppCompatActivity() {
         ljs_dialog?.setContentView(ljs_dialogView)
         ljs_dialog?.setCanceledOnTouchOutside(false)
 
-        // Set dialog size
         val ljs_window = ljs_dialog?.window
         ljs_window?.setLayout(900, 1200)
 
-        // Set dialog background shape
+
         ljs_window?.setBackgroundDrawable(
             ContextCompat.getDrawable(
                 this,
@@ -56,10 +54,9 @@ class SelectPayMethodActivity : AppCompatActivity() {
             )
         )
 
-        // Show dialog
         ljs_dialog?.show()
 
-        // Handle button click in card payment popup
+
         val ljs_cancel_btn = ljs_dialogView.findViewById<Button>(R.id.card_cancel_btn)
         val ljs_ok_btn = ljs_dialogView.findViewById<Button>(R.id.card_ok_btn)
 
@@ -90,16 +87,14 @@ class SelectPayMethodActivity : AppCompatActivity() {
         ljs_dialog?.setCanceledOnTouchOutside(false)
 
 
-        // Set dialog size
         val ljs_window = ljs_dialog?.window
         ljs_window?.setLayout(900, 1200)
 
         ljs_dialog?.window?.setBackgroundDrawableResource(R.drawable.popup_round_background)
 
-        // Show dialog
+
         ljs_dialog?.show()
 
-        // Handle button click in barcode payment popup
         val ljs_cancel_btn = ljs_dialogView.findViewById<Button>(R.id.barcode_cancel_btn)
         val ljs_ok_btn = ljs_dialogView.findViewById<Button>(R.id.barcode_ok_btn)
 
@@ -159,16 +154,13 @@ class SelectPayMethodActivity : AppCompatActivity() {
         )
 
 
-        // Set dialog size
         val window = ljs_dialog?.window
         window?.setLayout(900, 800)
 
         ljs_dialog?.window?.setBackgroundDrawableResource(R.drawable.popup_round_background)
 
-        // Show dialog
         ljs_dialog?.show()
 
-        // Handle button click in complete popup
         val ljs_goMain_btn = ljs_dialogView.findViewById<Button>(R.id.go_main)
         ljs_goMain_btn.setOnClickListener {
             val intent = Intent(this@SelectPayMethodActivity, MainActivity::class.java)
