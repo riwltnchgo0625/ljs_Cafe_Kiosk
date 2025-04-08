@@ -57,6 +57,25 @@
   <img src="./images/home.png" width="300">
 </p>
 
+###☕ 메뉴 페이지
+
+- 커피 카테고리에서 원하는 메뉴를 선택할 수 있습니다.
+- 각 메뉴는 이미지, 이름, 가격 정보와 함께 구성되어 있으며 수량 조절 버튼이 제공됩니다.
+
+<p align="center">
+  <img src="./images/menu_1.png" width="300">
+  <img src="./images/menu_2.png" width="300">
+  <img src="./images/menu_3.png" width="300">
+</p>
+
+### 🛒 주문 리스트 / 장바구니 화면
+
+- 선택한 메뉴들이 장바구니 형식으로 나열되며, 수량 변경, 삭제, 전체 가격 확인 기능이 제공됩니다.
+- 결제 버튼 클릭 시 다음 결제 화면으로 이동합니다.
+
+<p align="center">
+  <img src="./images/select.png" width="300">
+</p>
 
 ---
 
