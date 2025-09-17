@@ -47,7 +47,7 @@ class MenuAdapter(
         val ljs_menu = ljs_menuList[position]
         holder.ljs_menuImage.setImageResource(ljs_menu.ljs_imageResource)
         holder.ljs_menuName.text = ljs_menu.ljs_name
-        holder.ljs_menuPrice.text = ljs_menu.ljs_price.toString()
+        holder.ljs_menuPrice.text = String.format("%,d원", ljs_menu.ljs_price)
     }
 
     override fun getItemCount(): Int {

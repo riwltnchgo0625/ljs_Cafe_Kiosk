@@ -48,10 +48,10 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
         val ljs_recyclerView = findViewById<RecyclerView>(R.id.selected_menu_list)
         ljs_recyclerView.layoutManager = LinearLayoutManager(this)
 
-        //스크롤뷰 옵션
+        /*//스크롤뷰 옵션
         val ljs_scrollView = findViewById<ScrollView>(R.id.scrollview)
         ljs_scrollView.post {
-        }
+        }*/
 
         // 주문 리스트 초기화 버튼 초기화
         val ljs_allCancel_btn = findViewById<Button>(R.id.all_cancel_btn)
@@ -164,7 +164,7 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
                 true
             )
             val ljs_totalPriceText = createTextView(
-                orderItem.ljs_totalPrice.toString() + '원',
+                String.format("%,d원", orderItem.ljs_totalPrice),
                 1f,
                 Gravity.CENTER,
                 R.color.main3,
@@ -185,7 +185,7 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
 
         // 결제 총액
         val ljs_totalAmountTextView = ljs_dialogView.findViewById<TextView>(R.id.popup_total_amount)
-        ljs_totalAmountTextView.text = ljs_totalAmount.toString()
+        ljs_totalAmountTextView.text = String.format("%,d", ljs_totalAmount)
 
         val ljs_dialogBuilder = AlertDialog.Builder(this)
             .setView(ljs_dialogView)
@@ -232,7 +232,8 @@ class MenuActivity : AppCompatActivity(), CoffeeFragment.OnOrderClickListener,
 
     private fun updateOrderTotal() {
         val ljs_orderTotal = ljs_orderHistory.sumOf { it.ljs_totalPrice }
-        ljs_orderTotalTextView.text = ljs_orderTotal.toString()
+        ljs_orderTotalTextView.text = String.format("%,d", ljs_orderTotal)
+        //ljs_orderTotalTextView.text = ljs_orderTotal.toString()
     }
 
     class FirstFragment : Fragment() {
