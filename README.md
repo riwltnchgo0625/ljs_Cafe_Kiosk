@@ -60,7 +60,13 @@
 ### ☕ 메뉴 페이지
 
 - 커피 카테고리에서 원하는 메뉴를 선택할 수 있습니다.
+- 메뉴는 스와이프와 터치를 사용하여 화면전환 합니다.
 - 각 메뉴는 이미지, 이름, 가격 정보와 함께 구성되어 있으며 수량 조절 버튼이 제공됩니다.
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/1d7f6b93-1558-434d-8abe-29c278b62552" width="300"/>
+  <img src="https://github.com/user-attachments/assets/1d46fd05-eebf-421e-b732-b83284881c9a" width="300"/>
+
+</p>
 
 <p align="center">
   <img width="300" height="2400" alt="Screenshot_20250917_173456" src="https://github.com/user-attachments/assets/5c7f18fe-2a53-4456-a973-3ec0f962e726" />
