@@ -86,7 +86,8 @@
 - [취소] 또는 [결제 수단 선택]으로 다음 화면으로 이동 가능합니다.
 
 <p align="center">
-  <img src="./images/check.png" width="300">
+  <img width="300" height="2400" alt="Screenshot_20250917_174138" src="https://github.com/user-attachments/assets/f18eb44a-b60f-4408-8ecb-11c9f4dd2058" />
+
 </p>
 
 ---
