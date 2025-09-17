@@ -63,8 +63,8 @@
 - 메뉴는 스와이프와 터치를 사용하여 화면전환 합니다.
 - 각 메뉴는 이미지, 이름, 가격 정보와 함께 구성되어 있으며 수량 조절 버튼이 제공됩니다.
 <p align="center">
-![Screen_recording_20250917_173611](https://github.com/user-attachments/assets/63cce7b2-9fc6-4edb-8321-075aa5f3b34e)
-![Screen_recording_20250917_173611 (1)](https://github.com/user-attachments/assets/cbe2f0ac-b65b-46ef-927d-a5c1a87769a7)
+![](https://github.com/user-attachments/assets/63cce7b2-9fc6-4edb-8321-075aa5f3b34e)
+![](https://github.com/user-attachments/assets/cbe2f0ac-b65b-46ef-927d-a5c1a87769a7)
 </p>
 
 <p align="center">
