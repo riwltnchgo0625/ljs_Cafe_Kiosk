@@ -63,9 +63,9 @@
 - 각 메뉴는 이미지, 이름, 가격 정보와 함께 구성되어 있으며 수량 조절 버튼이 제공됩니다.
 
 <p align="center">
-  <img src="./images/menu_1.png" width="300">
-  <img src="./images/menu_2.png" width="300">
-  <img src="./images/menu_3.png" width="300">
+  <img width="300" height="2400" alt="Screenshot_20250917_173456" src="https://github.com/user-attachments/assets/5c7f18fe-2a53-4456-a973-3ec0f962e726" />
+  <img width="300" height="2400" alt="Screenshot_20250917_174300" src="https://github.com/user-attachments/assets/7b6ca4bd-b2fc-44c3-87ad-49e0637d46d5" />
+  <img width="300" height="2400" alt="Screenshot_20250917_174307" src="https://github.com/user-attachments/assets/7c6418aa-825a-456e-af09-bbc604f0447b" />
 </p>
 
 ### 🛒 주문 리스트 / 장바구니 화면
@@ -74,7 +74,7 @@
 - 결제 버튼 클릭 시 다음 결제 화면으로 이동합니다.
 
 <p align="center">
-  <img src="./images/select.png" width="300">
+  <img width="300" height="2400" alt="Screenshot_20250917_174124" src="https://github.com/user-attachments/assets/3675737d-e580-4cbf-8db9-6dd51526d7f4" />
 </p>
 
 
@@ -86,7 +86,8 @@
 - [취소] 또는 [결제 수단 선택]으로 다음 화면으로 이동 가능합니다.
 
 <p align="center">
-  <img src="./images/check.png" width="300">
+  <img width="300" height="2400" alt="Screenshot_20250917_174138" src="https://github.com/user-attachments/assets/f18eb44a-b60f-4408-8ecb-11c9f4dd2058" />
+
 </p>
 
 ---
