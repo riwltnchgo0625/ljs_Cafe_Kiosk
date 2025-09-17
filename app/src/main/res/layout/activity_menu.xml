@@ -1,160 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MenuActivity">
 
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/ljs_viewPager2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="top"
-        android:layout_weight="1"
-        tools:ignore="MissingConstraints" />
-
+    <!-- 상단 탭 -->
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/ljs_tabLayout"
         style="@style/TabText"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:background="@color/white"
-        android:textAlignment="center"
         app:tabGravity="fill"
         app:tabMode="fixed"
         app:tabTextColor="@color/black"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- 가운데: 메뉴 페이지(ViewPager2) -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/ljs_viewPager2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/ljs_tabLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_panel"/>
 
-    </com.google.android.material.tabs.TabLayout>
-
+    <!-- 하단 주문 패널 -->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/bottom_panel"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:ignore="MissingConstraints">
+        android:padding="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
+        <!-- 좌: 주문 리스트 + 합계 -->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:layout_weight="1"
             android:orientation="vertical">
 
-            <ScrollView
-                android:id="@+id/scrollview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:scrollbarSize="2dp"
-                android:scrollbars="vertical"
-                tools:ignore="UselessParent">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/selected_menu_list"
-                        android:layout_width="330dp"
-                        android:layout_height="180dp"
-                        android:layout_margin="3dp"
-                        android:background="@drawable/main_btn"
-                        android:backgroundTint="#C7EEEEEE" />
-
-                </LinearLayout>
-
-            </ScrollView>
+            <!-- ScrollView 제거: RV 자체 스크롤 -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/selected_menu_list"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/main_btn"
+                android:backgroundTint="#C7EEEEEE"
+                android:clipToPadding="false"
+                android:paddingBottom="4dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingHorizontal="8dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="4dp">
 
                 <TextView
                     android:id="@+id/order_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_marginLeft="5dp"
                     android:text="결제 금액"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:ignore="RtlHardcoded" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
 
                 <TextView
                     android:id="@+id/order_total_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="150dp"
-                    android:layout_marginRight="5dp"
-                    android:text="00000"
+                    android:text="0"
                     android:textColor="@color/red"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:ignore="HardcodedText" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/order_won_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
+                    android:layout_marginStart="4dp"
                     android:text="원"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
             </LinearLayout>
-
-
         </LinearLayout>
 
+        <!-- 우: 버튼 -->
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="220dp"
-            android:layout_gravity="bottom"
-            android:backgroundTint="@color/black"
-            android:clipToPadding="false"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
-
 
             <Button
                 android:id="@+id/all_cancel_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="6dp"
                 android:background="@drawable/cancel_pay_btn_background"
                 android:backgroundTint="#FE674B"
-                android:shadowColor="@color/dark_gray"
                 android:text="전체\n취소"
                 android:textColor="@color/white"
-                android:textSize="16dp"
-                android:textStyle="bold" />
+                android:textSize="14sp"
+                android:textStyle="bold"/>
 
             <Button
                 android:id="@+id/all_pay_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="2"
+                android:layout_width="64dp"
+                android:layout_height="96dp"
+                android:layout_margin="6dp"
                 android:background="@drawable/cancel_pay_btn_background"
                 android:backgroundTint="@color/main2"
                 android:text="결제"
                 android:textColor="@color/white"
-                android:textSize="16dp"
-                android:textStyle="bold" />
-
+                android:textSize="16sp"
+                android:textStyle="bold"/>
         </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
