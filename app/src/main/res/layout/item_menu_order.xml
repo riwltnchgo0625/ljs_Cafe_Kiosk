@@ -88,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="end"
-
+        android:text="원"
         android:textColor="@color/price_color"
         android:textSize="15sp"
         android:textStyle="bold"

@@ -31,8 +31,8 @@ class OrderHistoryAdapter(
         holder.ljs_menuNameText.text = item.ljs_menuName
         holder.ljs_menuQuantityText.text = item.ljs_quantity.toString()
 
-        // ✅ 가격(합계) 표기: 쉼표 + "원"
-        holder.ljs_menuPriceText.text = String.format("%,d원", item.ljs_totalPrice)
+        // 가격(합계) 표기: 쉼표 + "원"
+        holder.ljs_menuPriceText.text = String.format("%,d", item.ljs_totalPrice)
 
         // 버튼 핸들러
         holder.ljs_plus_btn.setOnClickListener { increaseQuantity(position, holder) }
@@ -56,7 +56,7 @@ class OrderHistoryAdapter(
         } else {
             Toast.makeText(
                 holder.itemView.context,
-                "최대 10잔까지만 주문할 수 있습니다.",
+                "주문 가능한 수량은 10까지 입니다.",
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -74,7 +74,7 @@ class OrderHistoryAdapter(
         } else {
             Toast.makeText(
                 holder.itemView.context,
-                "최소 1잔 이상 주문해야 합니다.",
+                "최소 주문수량은 1 이상 입니다.",
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -92,7 +92,7 @@ class OrderHistoryAdapter(
     private fun updateOrderTotal() {
         if (::ljs_totalAmountTextView.isInitialized) {
             val total = orderHistory.sumOf { it.ljs_totalPrice }
-            ljs_totalAmountTextView.text = String.format("%,d원", total)
+            ljs_totalAmountTextView.text = String.format("%,d", total)
         }
     }
 

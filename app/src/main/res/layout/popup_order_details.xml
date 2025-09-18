@@ -106,6 +106,7 @@
                         android:text="10000"
                         android:textStyle="bold" />
 
+
                 </TableRow>
 
             </TableLayout>
