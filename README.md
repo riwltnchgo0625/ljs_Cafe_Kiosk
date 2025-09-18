@@ -80,7 +80,8 @@
 - 결제 버튼 클릭 시 다음 결제 화면으로 이동합니다.
 
 <p align="center">
-  <img width="300" height="2400" alt="Screenshot_20250917_174124" src="https://github.com/user-attachments/assets/3675737d-e580-4cbf-8db9-6dd51526d7f4" />
+  <img width="300" height="2400" alt="Screenshot_20250918_093700" src="https://github.com/user-attachments/assets/fdc0e0f0-1a84-473d-94f0-3fa3d0ca01d1" />
+
 </p>
 
 
