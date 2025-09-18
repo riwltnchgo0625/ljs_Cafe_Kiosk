@@ -69,9 +69,9 @@
 </p>
 
 <p align="center">
-  <img width="300" height="2400" alt="Screenshot_20250917_173456" src="https://github.com/user-attachments/assets/5c7f18fe-2a53-4456-a973-3ec0f962e726" />
-  <img width="300" height="2400" alt="Screenshot_20250917_174300" src="https://github.com/user-attachments/assets/7b6ca4bd-b2fc-44c3-87ad-49e0637d46d5" />
-  <img width="300" height="2400" alt="Screenshot_20250917_174307" src="https://github.com/user-attachments/assets/7c6418aa-825a-456e-af09-bbc604f0447b" />
+  <img width="250" height="2400" alt="Screenshot_20250918_093814" src="https://github.com/user-attachments/assets/463ab932-3c9e-4b30-bc9c-d999aa0fd022" />
+  <img width="250" height="2400" alt="Screenshot_20250917_174300" src="https://github.com/user-attachments/assets/7b6ca4bd-b2fc-44c3-87ad-49e0637d46d5" />
+  <img width="250" height="2400" alt="Screenshot_20250917_174307" src="https://github.com/user-attachments/assets/7c6418aa-825a-456e-af09-bbc604f0447b" />
 </p>
 
 ### 🛒 주문 리스트 / 장바구니 화면
@@ -80,7 +80,8 @@
 - 결제 버튼 클릭 시 다음 결제 화면으로 이동합니다.
 
 <p align="center">
-  <img width="300" height="2400" alt="Screenshot_20250917_174124" src="https://github.com/user-attachments/assets/3675737d-e580-4cbf-8db9-6dd51526d7f4" />
+  <img width="300" height="2400" alt="Screenshot_20250918_093700" src="https://github.com/user-attachments/assets/fdc0e0f0-1a84-473d-94f0-3fa3d0ca01d1" />
+
 </p>
 
 
