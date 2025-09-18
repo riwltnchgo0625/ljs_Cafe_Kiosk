@@ -69,9 +69,9 @@
 </p>
 
 <p align="center">
-  <img width="300" height="2400" alt="Screenshot_20250917_173456" src="https://github.com/user-attachments/assets/5c7f18fe-2a53-4456-a973-3ec0f962e726" />
-  <img width="300" height="2400" alt="Screenshot_20250917_174300" src="https://github.com/user-attachments/assets/7b6ca4bd-b2fc-44c3-87ad-49e0637d46d5" />
-  <img width="300" height="2400" alt="Screenshot_20250917_174307" src="https://github.com/user-attachments/assets/7c6418aa-825a-456e-af09-bbc604f0447b" />
+  <img width="250" height="2400" alt="Screenshot_20250917_173456" src="https://github.com/user-attachments/assets/5c7f18fe-2a53-4456-a973-3ec0f962e726" />
+  <img width="250" height="2400" alt="Screenshot_20250917_174300" src="https://github.com/user-attachments/assets/7b6ca4bd-b2fc-44c3-87ad-49e0637d46d5" />
+  <img width="250" height="2400" alt="Screenshot_20250917_174307" src="https://github.com/user-attachments/assets/7c6418aa-825a-456e-af09-bbc604f0447b" />
 </p>
 
 ### 🛒 주문 리스트 / 장바구니 화면
