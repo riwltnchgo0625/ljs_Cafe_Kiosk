@@ -51,7 +51,7 @@ class OrderHistoryAdapter(
             item.ljs_quantity++
             item.ljs_totalPrice = item.ljs_menuPrice * item.ljs_quantity
             holder.ljs_menuQuantityText.text = item.ljs_quantity.toString()
-            holder.ljs_menuPriceText.text = String.format("%,d원", item.ljs_totalPrice)
+            holder.ljs_menuPriceText.text = String.format("%,d", item.ljs_totalPrice)
             updateOrderTotal()
         } else {
             Toast.makeText(
@@ -69,7 +69,7 @@ class OrderHistoryAdapter(
             item.ljs_quantity--
             item.ljs_totalPrice = item.ljs_menuPrice * item.ljs_quantity
             holder.ljs_menuQuantityText.text = item.ljs_quantity.toString()
-            holder.ljs_menuPriceText.text = String.format("%,d원", item.ljs_totalPrice)
+            holder.ljs_menuPriceText.text = String.format("%,d", item.ljs_totalPrice)
             updateOrderTotal()
         } else {
             Toast.makeText(
